@@ -1,6 +1,5 @@
 package br.ufrpe.Projeto_PetShop.repositorio.beans;
 
-import java.util.ArrayList;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Animal;
 
 public class Cliente {
@@ -9,7 +8,6 @@ public class Cliente {
 	private String telefone;
 	private String cpf;
 	private char sexo;
-	private ArrayList<Animal> animais;
 	
 	public Cliente(String nome, String endereco, String telefone,
 			String cpf, char sexo, Animal animal) {
@@ -18,7 +16,6 @@ public class Cliente {
 		this.telefone = telefone;
 		this.cpf = cpf;
 		this.sexo = sexo;
-		this.animais.add(animal);
 	}
 	public String getNome() {
 		return this.nome;
@@ -49,5 +46,16 @@ public class Cliente {
 	}
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
+	}
+	public boolean equals(Object o) {
+		Cliente outro = (Cliente) o;
+		return this.nome.equals(outro.getNome()) && this.cpf.equals(outro.getCpf())
+				&& this.endereco.equals(outro.getEndereco()) && this.sexo == outro.getSexo()
+				&& this.telefone.equals(outro.getTelefone());
+	}
+	public String toString() {
+		String text = "Nome: " + this.nome + "\nCPF: " + this.cpf +"\n Sexo: "+ this.cpf 
+			+ "\nTelefone: "+ this.telefone + "\nEndereco: " + this.endereco;
+		return text;
 	}
 }
