@@ -1,16 +1,29 @@
 package br.ufrpe.Projeto_PetShop.repositorio;
 
+import java.time.LocalDate;
+
 import br.ufrpe.Projeto_PetShop.repositorio.beans.*;
 
 public class Repositorio{
 	private Funcionario funcionarios[] = new Funcionario[5];
 	private Cliente clientes[] = new Cliente[5];
+	private Consultas consultas[];
+	private int consultasTam = 0;
 	private int clientesTam = 0;
 	private int funcionariosTam = 0;
 	
 	
 	public Repositorio() {}
 
+	private Consulta procurarConsulta(Animal animal, LocalDate data, Veterinario veterinario) {
+		for(int i = 0 ; i < consultasTam ; i++) {
+			if(animal.equals(consultas[i].getAnimal) 
+					&& data.equals(consultas[i]) && veterinario.equals(consultas[i].getVeterinario)) {
+				return consultas[i];
+			}
+		}
+		return null;
+	}
 	private Funcionario procurarFuncionario(String cpf) {
 		for(int i = 0; i < funcionariosTam; i++) {
 			if(funcionarios[i].getCPF().equals(cpf)) {
@@ -48,5 +61,8 @@ public class Repositorio{
 	}
 	public Cliente getCliente(String cpf) {
 		return procurarCliente(cpf);
+	}
+	public Consultas getConsultas(Animal animal, LocalDate data, Veterinario veterinario) {
+		return procurarConsulta(animal, data, veterinario);
 	}
 }
