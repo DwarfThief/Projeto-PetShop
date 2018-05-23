@@ -7,7 +7,7 @@ import br.ufrpe.Projeto_PetShop.repositorio.beans.*;
 public class Repositorio{
 	private Funcionario funcionarios[] = new Funcionario[5];
 	private Cliente clientes[] = new Cliente[5];
-	private Consultas consultas[];
+	private Consulta consultas[];
 	private int consultasTam = 0;
 	private int clientesTam = 0;
 	private int funcionariosTam = 0;
@@ -17,8 +17,8 @@ public class Repositorio{
 
 	private Consulta procurarConsulta(Animal animal, LocalDate data, Veterinario veterinario) {
 		for(int i = 0 ; i < consultasTam ; i++) {
-			if(animal.equals(consultas[i].getAnimal) 
-					&& data.equals(consultas[i]) && veterinario.equals(consultas[i].getVeterinario)) {
+			if(animal.equals(consultas[i].getAnimal()) 
+					&& data.equals(consultas[i]) && veterinario.equals(consultas[i].getVeterinario())) {
 				return consultas[i];
 			}
 		}
@@ -62,7 +62,7 @@ public class Repositorio{
 	public Cliente getCliente(String cpf) {
 		return procurarCliente(cpf);
 	}
-	public Consultas getConsultas(Animal animal, LocalDate data, Veterinario veterinario) {
+	public Consulta getConsultas(Animal animal, LocalDate data, Veterinario veterinario) {
 		return procurarConsulta(animal, data, veterinario);
 	}
 }
