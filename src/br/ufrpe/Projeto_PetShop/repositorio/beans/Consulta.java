@@ -4,15 +4,15 @@ import java.time.LocalDate;
 
 public class Consulta {
 	private Animal animal;
-	private Veterinario medico;
+	private Veterinario veterinario;
 	private LocalDate time;
 	
 	public Animal getAnimal() {
 		return animal;
 	}
 	
-	public Veterinario getMedico() {
-		return medico;
+	public Veterinario getVeterinario() {
+		return veterinario;
 	}
 	
 	public LocalDate getTime() {
@@ -21,11 +21,11 @@ public class Consulta {
 	
 	public void consulta(Animal nome, Veterinario medico) {
 		this.animal=nome;
-		this.medico=medico;
+		this.veterinario = medico;
 		this.time = LocalDate.now();
 	}
 	
 	public String toString() {
-		return animal.getNome() + " foi consultado por " + medico.getNome() + " as " + time;
+		return this.animal.getNome() + " foi consultado por " + this.veterinario.getNome() + " as " + time;
 	}
 }
