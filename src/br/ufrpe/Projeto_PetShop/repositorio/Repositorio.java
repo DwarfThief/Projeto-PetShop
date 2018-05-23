@@ -18,7 +18,7 @@ public class Repositorio{
 	private Consulta procurarConsulta(Animal animal, LocalDate data, Veterinario veterinario) {
 		for(int i = 0 ; i < consultasTam ; i++) {
 			if(animal.equals(consultas[i].getAnimal()) 
-					&& data.equals(consultas[i]) && veterinario.equals(consultas[i].getVeterinario())) {
+					&& data.equals(consultas[i].getTime()) && veterinario.equals(consultas[i].getVeterinario())) {
 				return consultas[i];
 			}
 		}
