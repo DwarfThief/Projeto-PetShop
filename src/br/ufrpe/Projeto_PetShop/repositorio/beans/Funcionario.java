@@ -30,6 +30,10 @@ public abstract class Funcionario {
 	public String getSenha() {
 		return this.senha;
 	}
+	public boolean equals(Object funcionario) {
+		return funcionario != null && ((Funcionario)funcionario).getNome().equals(this.nome)
+		&& ((Funcionario)funcionario).getCPF() == this.cpf;
+	}
 	public String toString() {
 		return "Nome: " + this.nome + "\nCPF: " + this.cpf;
 	}
