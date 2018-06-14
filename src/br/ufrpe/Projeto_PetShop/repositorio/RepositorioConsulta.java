@@ -1,11 +1,6 @@
 package br.ufrpe.Projeto_PetShop.repositorio;
 
-import java.time.LocalDateTime;
-
-import br.ufrpe.Projeto_PetShop.repositorio.beans.Animal;
-import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Consulta;
-import br.ufrpe.Projeto_PetShop.repositorio.beans.Veterinario;
 
 public class RepositorioConsulta {
 	private Consulta consultas[]=new Consulta[5];
