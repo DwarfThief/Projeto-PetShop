@@ -27,7 +27,9 @@ public class Consulta {
 	public LocalDateTime getTime() {
 		return data;
 	}	
-	
+	public boolean equals(Object consulta) {
+		return ((Consulta)consulta).getAnimal().equals(this.animal) && ((Consulta)consulta).getVeterinario().equals(this.veterinario);
+	}
 	
 	public String toString() {
 		return this.animal.getNome() + " foi consultado por " + this.veterinario.getNome() + " as " + data;
