@@ -9,7 +9,7 @@ public class RepositorioFuncionario{
 	public RepositorioFuncionario() {}
 	private Funcionario procurarFuncionario(String cpf) {
 		for(int i = 0; i < funcionariosTam; i++) {
-			if(funcionarios[i].getCPF().equals(cpf)) {
+			if(funcionarios[i].getCpf().equals(cpf)) {
 				return funcionarios[i];
 			}
 		}
@@ -18,7 +18,7 @@ public class RepositorioFuncionario{
 	private int procurarPos(String cpf) {
 		int i = 0;
         for(; i<this.funcionariosTam; i++) {
-        	if(cpf.equals(this.funcionarios[i].getCPF())) {
+        	if(cpf.equals(this.funcionarios[i].getCpf())) {
         		return i;
         	}
         }

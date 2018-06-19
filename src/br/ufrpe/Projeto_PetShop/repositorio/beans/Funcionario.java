@@ -12,10 +12,10 @@ public abstract class Funcionario {
 	public String getNome() {
 		return this.nome;
 	}
-	public void setCPF(String cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public String getCPF() {
+	public String getCpf() {
 		return this.cpf;
 	}
 	public void setLogin(String login) {
@@ -32,7 +32,7 @@ public abstract class Funcionario {
 	}
 	public boolean equals(Object funcionario) {
 		return funcionario != null && ((Funcionario)funcionario).getNome().equals(this.nome)
-		&& ((Funcionario)funcionario).getCPF() == this.cpf;
+		&& ((Funcionario)funcionario).getCpf() == this.cpf;
 	}
 	public String toString() {
 		return "Nome: " + this.nome + "\nCPF: " + this.cpf;
