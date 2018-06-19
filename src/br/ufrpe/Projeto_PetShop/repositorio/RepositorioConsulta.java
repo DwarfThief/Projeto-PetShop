@@ -34,7 +34,7 @@ public class RepositorioConsulta implements IRepositorioConsulta{
 	public Consulta getConsulta(Consulta consulta) {
 		return this.procurarConsulta(consulta);
 	}	
-	public void removeConsulta(Consulta consulta) {
+	public void removerConsulta(Consulta consulta) {
 		int i = this.procurarPos(consulta);
 		if (i != this.consultasTam) {
             this.consultas[i] = this.consultas[this.consultasTam - 1];
