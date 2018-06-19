@@ -9,29 +9,41 @@ public class RepositorioConsulta implements IRepositorioConsulta{
 	public RepositorioConsulta() {}	
 	private Consulta procurarConsulta (Consulta consulta) {
 		for(int i=0;i<consultasTam;i++) {
-			consultas[i].equals(consulta);
+			if(consultas[i].equals(consulta)) {
+				return consultas[i];
+			}			
 		}
 		return null;
-	}	
-	public void adicionarConsulta(Consulta consulta) {
+	}
+	private int procurarPos(Consulta consulta) {
+		int i = 0;
+        for(; i<this.consultasTam; i++) {
+        	if(consultas[i].equals(consulta)) {
+        		return i;
+        	}
+        }
+        return -1;
+	}
+	public void addConsulta(Consulta consulta) {
 		if(this.consultasTam == this.consultas.length) {
 			this.duplicaArray();
 		}
 		this.consultas[consultasTam]=consulta;
-		consultasTam++;
+		this.consultasTam++;
 	}	
 	public Consulta getConsulta(Consulta consulta) {
 		return this.procurarConsulta(consulta);
 	}	
 	public void removeConsulta(Consulta consulta) {
-		for(int i=0;i<consultasTam;i++) {
-			if(consultas[i].equals(consulta)) {
-				this.consultas[i]=this.consultas[consultasTam-1];
-				this.consultas[consultasTam-1]=null;
-				this.consultasTam--;
-			}
-		}
-	}		
+		int i = this.procurarPos(consulta);
+		if (i != this.consultasTam) {
+            this.consultas[i] = this.consultas[this.consultasTam - 1];
+            this.consultas[this.consultasTam - 1] = null;
+            this.consultasTam = this.consultasTam - 1;
+        } else {
+            //falta implementar exception
+        }
+	}
 	private void duplicaArray() {
         if (this.consultas != null && this.consultas.length > 0) {
             Consulta[] arrayDuplicado = new Consulta[this.consultas.length * 2];
