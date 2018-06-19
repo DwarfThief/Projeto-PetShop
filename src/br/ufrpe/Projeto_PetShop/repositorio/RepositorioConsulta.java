@@ -3,10 +3,19 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Consulta;
 
 public class RepositorioConsulta implements IRepositorioConsulta{
+	private static RepositorioConsulta instance;
+	
 	private Consulta consultas[]=new Consulta[5];
 	private int consultasTam=0;
-	//mudar o remover
-	public RepositorioConsulta() {}	
+
+	
+	public static RepositorioConsulta getInstance() {
+	    if (instance == null) {
+	      instance = new RepositorioConsulta();
+	    }
+	    return instance;
+	}
+	private RepositorioConsulta() {}	
 	private Consulta procurarConsulta (Consulta consulta) {
 		for(int i=0;i<consultasTam;i++) {
 			if(consultas[i].equals(consulta)) {
@@ -25,11 +34,14 @@ public class RepositorioConsulta implements IRepositorioConsulta{
         return -1;
 	}
 	public void addConsulta(Consulta consulta) {
-		if(this.consultasTam == this.consultas.length) {
-			this.duplicaArray();
+		if(consulta != null && procurarConsulta(consulta) == null) {
+			if(this.consultasTam == this.consultas.length) {
+				this.duplicaArray();
+			}
+			this.consultas[consultasTam]=consulta;
+			this.consultasTam++;
 		}
-		this.consultas[consultasTam]=consulta;
-		this.consultasTam++;
+		//TODO exception
 	}	
 	public Consulta getConsulta(Consulta consulta) {
 		return this.procurarConsulta(consulta);

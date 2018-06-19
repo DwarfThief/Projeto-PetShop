@@ -3,10 +3,19 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 
 public class RepositorioFuncionario implements IRepositorioFuncionario{
+	private static RepositorioFuncionario instance;
+	
 	private Funcionario funcionarios[] = new Funcionario[5];
 	private int funcionariosTam = 0;
 	
-	public RepositorioFuncionario() {}
+	
+	public static RepositorioFuncionario getInstance() {
+	    if (instance == null) {
+	      instance = new RepositorioFuncionario();
+	    }
+	    return instance;
+	}
+	private RepositorioFuncionario() {}
 	private Funcionario procurarFuncionario(String cpf) {
 		for(int i = 0; i < funcionariosTam; i++) {
 			if(funcionarios[i].getCpf().equals(cpf)) {

@@ -3,8 +3,19 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Animal;
 
 public class RepositorioAnimal implements IRepositorioAnimal {
-	Animal animais[] = new Animal[5];
-	int animaisTam = 0;
+	private static RepositorioAnimal instance;
+	
+	private Animal animais[] = new Animal[5];
+	private int animaisTam = 0;
+	
+	
+	public static RepositorioAnimal getInstance() {
+	    if (instance == null) {
+	      instance = new RepositorioAnimal();
+	    }
+	    return instance;
+	}
+	private RepositorioAnimal() {}
 	@Override
 	public void addAnimal(Animal animal) {
 		if(animal != null) {

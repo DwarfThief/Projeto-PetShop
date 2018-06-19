@@ -3,10 +3,19 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 
 public class RepositorioCliente implements IRepositorioCliente  {
-	private Cliente clientes[]=new Cliente[5];
-	private int clientesTam=0;
+	private static RepositorioCliente instance;
 	
-	public RepositorioCliente () {}	
+	private Cliente clientes[] = new Cliente[5];
+	private int clientesTam = 0;
+	
+	
+	public static RepositorioCliente getInstance() {
+	    if (instance == null) {
+	      instance = new RepositorioCliente();
+	    }
+	    return instance;
+	}
+	private RepositorioCliente () {}	
 	private Cliente procurarCliente (String cpf) {
 		for(int i=0;i<clientesTam;i++) {
 			if(clientes[i].getCpf().equals(cpf)) {
