@@ -25,11 +25,14 @@ public class RepositorioCliente implements IRepositorioCliente  {
         return clientesTam;
 	}	
 	public void addCliente(Cliente cliente) {
-		if(this.clientesTam == this.clientes.length) {
-			this.duplicaArray();
+		if(cliente != null && procurarCliente(cliente.getCpf()) == null) {
+			if(this.clientesTam == this.clientes.length) {
+				this.duplicaArray();
+			}
+			this.clientes[clientesTam]=cliente;
+			this.clientesTam++;
 		}
-		this.clientes[clientesTam]=cliente;
-		this.clientesTam++;
+		//TODO exception
 	}	
 	public Cliente getCliente(String cpf) {
 		return this.procurarCliente(cpf);
@@ -41,7 +44,7 @@ public class RepositorioCliente implements IRepositorioCliente  {
             this.clientes[this.clientesTam - 1] = null;
             this.clientesTam = this.clientesTam - 1;
         } else {
-            //falta implementar exception
+        	//TODO exception
         }
 	}	
 	private void duplicaArray() {

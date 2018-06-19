@@ -43,7 +43,8 @@ public class Animal {
 	}
 	public boolean equals(Object o) {
 		Animal outro = (Animal) o;
-		return this.nome.equals(outro.getNome()) && this.raca.equals(outro.getRaca()) && this.sexo == outro.getSexo();
+		return this.nome.equals(outro.getNome()) && this.raca.equals(outro.getRaca()) && this.sexo == outro.getSexo() 
+				&& this.dono.equals(outro.getDono());
 	}
 	public String toString() {
 		return "Nome: " + this.nome 

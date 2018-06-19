@@ -25,11 +25,14 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
         return funcionariosTam;
 	}
 	public void addFuncionario(Funcionario funcionario) {
-		if(this.funcionariosTam == this.funcionarios.length) {
-			this.duplicaArray();
+		if(funcionario != null && procurarFuncionario(funcionario.getCpf()) == null) {
+			if(this.funcionariosTam == this.funcionarios.length) {
+				this.duplicaArray();
+			}
+			this.funcionarios[funcionariosTam] = funcionario;
+			this.funcionariosTam++;
 		}
-		this.funcionarios[funcionariosTam] = funcionario;
-		this.funcionariosTam++;
+		//TODO exception
 	}
 	public Funcionario getFuncionario(String cpf) {
 		return this.procurarFuncionario(cpf);
@@ -41,7 +44,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
             this.funcionarios[this.funcionariosTam - 1] = null;
             this.funcionariosTam = this.funcionariosTam - 1;
         } else {
-            //falta implementar exception
+        	//TODO exception
         }
 	}
 	private void duplicaArray() {

@@ -1,7 +1,5 @@
 package br.ufrpe.Projeto_PetShop.repositorio.beans;
 
-import br.ufrpe.Projeto_PetShop.repositorio.beans.Animal;
-
 public class Cliente {
 	private String nome;
 	private String endereco;
@@ -10,7 +8,7 @@ public class Cliente {
 	private char sexo;
 	
 	public Cliente(String nome, String endereco, String telefone,
-			String cpf, char sexo, Animal animal) {
+			String cpf, char sexo) {
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;

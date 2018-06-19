@@ -41,7 +41,7 @@ public class RepositorioConsulta implements IRepositorioConsulta{
             this.consultas[this.consultasTam - 1] = null;
             this.consultasTam = this.consultasTam - 1;
         } else {
-            //falta implementar exception
+            //TODO exceptions
         }
 	}
 	private void duplicaArray() {
