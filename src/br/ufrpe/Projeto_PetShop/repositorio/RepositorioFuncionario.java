@@ -22,7 +22,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
         		return i;
         	}
         }
-        return -1;
+        return funcionariosTam;
 	}
 	public void addFuncionario(Funcionario funcionario) {
 		if(this.funcionariosTam == this.funcionarios.length) {

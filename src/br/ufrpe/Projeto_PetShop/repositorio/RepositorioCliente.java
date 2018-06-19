@@ -22,7 +22,7 @@ public class RepositorioCliente implements IRepositorioCliente  {
         		return i;
         	}
         }
-        return -1;
+        return clientesTam;
 	}	
 	public void addCliente(Cliente cliente) {
 		if(this.clientesTam == this.clientes.length) {
