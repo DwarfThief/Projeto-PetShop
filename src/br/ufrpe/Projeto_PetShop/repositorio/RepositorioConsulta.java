@@ -2,7 +2,7 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Consulta;
 
-public class RepositorioConsulta {
+public class RepositorioConsulta implements IRepositorioConsulta{
 	private Consulta consultas[]=new Consulta[5];
 	private int consultasTam=0;
 	//mudar o remover

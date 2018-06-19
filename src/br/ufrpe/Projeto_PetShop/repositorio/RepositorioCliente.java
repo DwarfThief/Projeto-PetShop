@@ -2,7 +2,7 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 
-public class RepositorioCliente {
+public class RepositorioCliente implements IRepositorioCliente  {
 	private Cliente clientes[]=new Cliente[5];
 	private int clientesTam=0;
 	

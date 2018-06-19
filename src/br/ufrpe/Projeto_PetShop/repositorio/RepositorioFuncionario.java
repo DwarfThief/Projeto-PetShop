@@ -2,7 +2,7 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 
-public class RepositorioFuncionario{
+public class RepositorioFuncionario implements IRepositorioFuncionario{
 	private Funcionario funcionarios[] = new Funcionario[5];
 	private int funcionariosTam = 0;
 	
