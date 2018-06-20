@@ -76,7 +76,7 @@ public class ControllerAdm {
 	}
 	public Animal[] getAnimaisDono(String cpf) {
 		if(cpf != null) {
-			Animal[] animais = instanceRepAnimal.getAnimaisDono(cpf);
+			Animal[] animais = instanceRepAnimal.getAnimaisCliente(cpf);
 			if(animais != null) {
 				return animais;
 			}
@@ -86,11 +86,11 @@ public class ControllerAdm {
 	public Animal[] getAnimaisDono(Cliente cliente) {
 		return this.getAnimaisDono(cliente.getCpf());
 	}
-	public void removerAnimal(String cpf, String nome) {
-		instanceRepAnimal.removerAnimal(cpf, nome);
+	public void removerCliente(String cpf, String nome) {
+		instanceRepAnimal.remover(cpf, nome);
 	}
-	public void removerAnimal(Cliente cliente, String nome) {
-		instanceRepAnimal.removerAnimal(cliente.getCpf(), nome);
+	public void removerCliente(Cliente cliente, String nome) {
+		instanceRepAnimal.remover(cliente.getCpf(), nome);
 	}
 	public void addVendendor(Funcionario funcionario) {
 		if(funcionario != null) {
@@ -139,5 +139,22 @@ public class ControllerAdm {
 			return instanceRepFuncionario.getFuncionario(cpf);
 		}
 		return null;
+	}
+	public void removerFuncionario(String cpf) {
+		this.instanceRepFuncionario.remover(cpf);
+	}
+	public void removerFuncionario(Funcionario funcionario) {
+		this.instanceRepFuncionario.remover(funcionario.getCpf());
+	}
+	public Consulta getConsulta(Consulta consulta) {
+		if(consulta!=null) {
+			return this.instanceRepConsulta.getConsulta(consulta);
+		}
+		return null;
+	}
+	public void removerConsulta(Consulta consulta) {
+		if(consulta!=null) {
+			this.instanceRepConsulta.removerConsulta(consulta);
+		}
 	}
 }
