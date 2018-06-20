@@ -19,7 +19,6 @@ public class Fachada {
 	public ControllerAdm controllerAdm = new ControllerAdm(instanceRepCliente, instanceRepConsulta
 			, instanceRepAnimal, instanceRepFuncionario);
 	
-	
 	public static Fachada getInstance() {
 	    if (instance == null) {
 	      instance = new Fachada();

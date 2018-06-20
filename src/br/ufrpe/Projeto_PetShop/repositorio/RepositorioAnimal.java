@@ -36,12 +36,11 @@ public class RepositorioAnimal implements IRepositorioAnimal {
             this.animais = arrayDuplicado;
         }		
 	}
-	@Override
 	public Animal getAnimal(String cpf, String nome) {
 		return this.procurarAnimal(cpf, nome);
 	}
 	@Override
-	public Animal[] getAnimaisDono(String cpf) {
+	public Animal[] getAnimaisCliente(String cpf) {
 		Animal[] donos = new Animal[1];
 		int donosTam = 0;
 		for(int i = 0 ; i<animaisTam ; i++ ) {
@@ -69,7 +68,7 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 		return null;
 	}
 	@Override
-	public void removerAnimal(String cpf, String nome) {
+	public void remover(String cpf, String nome) {
 		int i = this.procurarPos(cpf, nome);
 		if (i != this.animaisTam) {
             this.animais[i] = this.animais[this.animaisTam - 1];
