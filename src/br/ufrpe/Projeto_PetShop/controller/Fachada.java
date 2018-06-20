@@ -16,8 +16,10 @@ public class Fachada {
 	private IRepositorioConsulta instanceRepConsulta = RepositorioConsulta.getInstance();
 	private IRepositorioFuncionario instanceRepFuncionario = RepositorioFuncionario.getInstance();
 	
-	public ControllerAdm controllerAdm = new ControllerAdm(instanceRepCliente, instanceRepConsulta
-			, instanceRepAnimal, instanceRepFuncionario);
+	public ControllerAdm controllerAdm;
+	public CheckLogin checkLogin;
+	public ControllerVet controllerVet;
+	public ControllerVendendor controllerVendendor;
 	
 	public static Fachada getInstance() {
 	    if (instance == null) {
@@ -25,5 +27,12 @@ public class Fachada {
 	    }
 	    return instance;
 	}
-	private Fachada () {}
+	private Fachada () {
+		this.controllerAdm = new ControllerAdm(this.instanceRepCliente, this.instanceRepConsulta
+				, this.instanceRepAnimal, this.instanceRepFuncionario);
+		this.checkControl = new CheckLogin(this.instanceRepFuncionario);
+		this.controllerVet = new ControllerVet(this.instanceRepConsulta, this.instanceRepAnimal);
+		this.controllerVendendor = new ControllerVendendor(this.instanceRepCliente, this.instanceRepConsulta, instanceRepAnimal);
+			
+	}
 }

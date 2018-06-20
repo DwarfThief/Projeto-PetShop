@@ -46,6 +46,12 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	public Funcionario getFuncionario(String cpf) {
 		return this.procurarFuncionario(cpf);
 	}
+	public Funcionario getFuncionario(int pos) {
+		if(pos < this.funcionariosTam) {
+			return this.funcionarios[pos];
+		}
+		return null;
+	}
 	public void remover(String cpf) {
 		int i = this.procurarPos(cpf);
 		if (i != this.funcionariosTam) {
