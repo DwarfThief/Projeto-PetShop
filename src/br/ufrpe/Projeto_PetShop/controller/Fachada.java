@@ -30,7 +30,7 @@ public class Fachada {
 	private Fachada () {
 		this.controllerAdm = new ControllerAdm(this.instanceRepCliente, this.instanceRepConsulta
 				, this.instanceRepAnimal, this.instanceRepFuncionario);
-		this.checkControl = new CheckLogin(this.instanceRepFuncionario);
+		this.checkLogin = new CheckLogin(this.instanceRepFuncionario);
 		this.controllerVet = new ControllerVet(this.instanceRepConsulta, this.instanceRepAnimal);
 		this.controllerVendendor = new ControllerVendendor(this.instanceRepCliente, this.instanceRepConsulta, instanceRepAnimal);
 			
