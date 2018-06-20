@@ -40,6 +40,26 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 	public Animal getAnimal(String cpf, String nome) {
 		return this.procurarAnimal(cpf, nome);
 	}
+	@Override
+	public Animal[] getAnimaisDono(String cpf) {
+		Animal[] donos = new Animal[1];
+		int donosTam = 0;
+		for(int i = 0 ; i<animaisTam ; i++ ) {
+			if(animais[i].getDono().getCpf().equals(cpf)) {
+				donos[donosTam] = animais[i];
+				donosTam++;
+				if(donosTam>donos.length) {
+					Animal[] arrayDuplicado = new Animal[donos.length * 2];
+		            for (int x = 0; x < donos.length ; x++) {
+		                arrayDuplicado[i] = donos[i];
+		            }
+		            donos = arrayDuplicado;
+				}
+				
+			}
+		}
+		return donos;
+	}
 	private Animal procurarAnimal(String cpf, String nome) {
 		for(int i=0;i<animaisTam;i++) {
 			if(animais[i].getNome().equals(nome) && animais[i].getDono().getCpf().equals(cpf)) {

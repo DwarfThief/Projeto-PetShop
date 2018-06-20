@@ -74,6 +74,18 @@ public class ControllerAdm {
 		}
 		return instanceRepAnimal.getAnimal(cliente.getCpf(), nome);
 	}
+	public Animal[] getAnimaisDono(String cpf) {
+		if(cpf != null) {
+			Animal[] animais = instanceRepAnimal.getAnimaisDono(cpf);
+			if(animais != null) {
+				return animais;
+			}
+		}
+		return null;
+	}
+	public Animal[] getAnimaisDono(Cliente cliente) {
+		return this.getAnimaisDono(cliente.getCpf());
+	}
 	public void removerAnimal(String cpf, String nome) {
 		instanceRepAnimal.removerAnimal(cpf, nome);
 	}

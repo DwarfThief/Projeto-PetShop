@@ -6,4 +6,5 @@ public interface IRepositorioAnimal {
 	public void addAnimal(Animal animal);
 	public Animal getAnimal(String cpf, String nome);
 	public void removerAnimal(String cpf, String nome);
+	public Animal[] getAnimaisDono(String cpf);
 }
