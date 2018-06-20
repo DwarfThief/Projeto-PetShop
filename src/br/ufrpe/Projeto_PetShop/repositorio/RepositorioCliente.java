@@ -8,14 +8,14 @@ public class RepositorioCliente implements IRepositorioCliente  {
 	private Cliente clientes[] = new Cliente[5];
 	private int clientesTam = 0;
 	
-	
 	public static RepositorioCliente getInstance() {
 	    if (instance == null) {
 	      instance = new RepositorioCliente();
 	    }
 	    return instance;
 	}
-	private RepositorioCliente () {}	
+	private RepositorioCliente () {}
+	
 	private Cliente procurarCliente (String cpf) {
 		for(int i=0;i<clientesTam;i++) {
 			if(clientes[i].getCpf().equals(cpf)) {
@@ -46,7 +46,7 @@ public class RepositorioCliente implements IRepositorioCliente  {
 	public Cliente getCliente(String cpf) {
 		return this.procurarCliente(cpf);
 	}	
-	public void removeCliente(String cpf) {
+	public void removerCliente(String cpf) {
 		int i = this.procurarPos(cpf);
 		if (i != this.clientesTam) {
             this.clientes[i] = this.clientes[this.clientesTam - 1];

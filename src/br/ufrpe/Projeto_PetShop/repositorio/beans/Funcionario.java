@@ -6,6 +6,8 @@ public abstract class Funcionario {
 	protected String login;
 	protected String senha;
 	
+	public Funcionario() {};
+	public Funcionario(String nome, String cpf, String login, String senha) {}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
