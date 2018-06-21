@@ -146,9 +146,9 @@ public class ControllerAdm {
 	public void removerFuncionario(Funcionario funcionario) {
 		this.instanceRepFuncionario.remover(funcionario.getCpf());
 	}
-	public Consulta getConsulta(Consulta consulta) {
-		if(consulta!=null) {
-			return this.instanceRepConsulta.getConsulta(consulta);
+	public Consulta getConsulta(String veterinario, int dia, int mes, int ano, String nomeAnimal) {
+		if(veterinario != null && nomeAnimal!=null) {
+			return this.instanceRepConsulta.getConsulta(veterinario, dia, mes, ano, nomeAnimal);
 		}
 		return null;
 	}
