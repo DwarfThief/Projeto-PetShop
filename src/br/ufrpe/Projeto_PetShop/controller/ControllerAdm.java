@@ -94,12 +94,12 @@ public class ControllerAdm {
 	}
 	public void addVendendor(Funcionario funcionario) {
 		if(funcionario != null) {
-			instanceRepFuncionario.addFuncionario((Vendendor)funcionario);
+			instanceRepFuncionario.addFuncionario((Vendedor)funcionario);
 		}
 	}
 	public void addVendendor(String nome, String cpf, String login, String senha) {
 		if(nome != null && cpf != null && login != null && senha != null) {
-			Funcionario funcionario = new Vendendor(nome, cpf, login, senha);
+			Funcionario funcionario = new Vendedor(nome, cpf, login, senha);
 			instanceRepFuncionario.addFuncionario(funcionario);
 		}
 	}
