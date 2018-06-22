@@ -2,9 +2,10 @@ package gui;
 
 import java.util.Scanner;
 import br.ufrpe.Projeto_PetShop.controller.*;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 
 public class Menu {
-	
+	private Fachada fachada = Fachada.getInstance();
 	private Scanner sc = new Scanner (System.in);
 	private  int escolha,opcao;
 	
@@ -116,7 +117,7 @@ public class Menu {
 		/*//Funcoes do Veterinario
 		System.out.println("Informe seu cpf");
 		String cpf = sc.nextLine();
-		//Pesquisar quais consultas ele ta pra poder mostrar
+		//TODO Pesquisar quais consultas ele ta pra poder mostrar
 		System.out.println("1) Consultas marcadas");*/
 	}
 	
@@ -128,8 +129,8 @@ public class Menu {
 		String veterinario = sc.nextLine();
 		System.out.print("Data da consulta: ");
 		String data = sc.nextLine();
-		//Como passar essas informações pra serem verificadas pela fachada??
-		//Tem que tranformar nomeA em Animal, veterinario em Veterinario e data em LocalDateTime
+		//TODO Como passar essas informações pra serem verificadas pela fachada??
+		//TODO Tem que tranformar nomeA em Animal, veterinario em Veterinario e data em LocalDateTime
 	}
 	
 	public void cadastroCliente() {
@@ -145,13 +146,14 @@ public class Menu {
 		sc.nextLine();
 		System.out.print("Sexo: ");
 		char sexo = sc.nextLine().charAt(0);
-		//Como passar essas informações pra serem verificadas pela fachada??
+		fachada.controllerAdm.cadastrarCliente(nome, endereco, telefone, cpf, sexo);
 	}
 	
 	public void cadastroAnimal() {
 		System.out.print("------ Cadastro Animal ------\n\n");
-		System.out.print("Nome do dono do animal: ");
-		String nome = sc.nextLine();		
+		System.out.print("Cpf do dono: ");
+		String cpf = sc.nextLine();
+		Cliente dono = fachada.controllerAdm.getCliente(cpf);
 		System.out.print("\nInformacoes sobre o animal\n");
 		System.out.print("Nome: ");
 		String nomeA = sc.nextLine();
@@ -159,8 +161,8 @@ public class Menu {
 		String raca = sc.nextLine();
 		sc.nextLine();
 		System.out.print("Sexo: ");
-		char sexoA = sc.nextLine().charAt(0);
-		//Como passar essas informações pra serem verificadas pela fachada??
+		char sexo = sc.nextLine().charAt(0);
+		fachada.controllerAdm.cadastrarAnimal(nomeA, raca, sexo, dono);
 	}
 	
 	public void cadastroFuncionario() {
@@ -173,7 +175,15 @@ public class Menu {
 		String login = sc.nextLine();
 		System.out.print("Senha: ");
 		String senha = sc.nextLine();
-		//Como passar essas informações pra serem verificadas pela fachada??
+		System.out.println("1)Gerente\n2)Vendedo\n3)Veterinario");
+		int tipo = sc.nextInt();
+		if(tipo == 1) {
+			fachada.controllerAdm.addGerente(nome,cpf,login,senha);
+		}if(tipo == 2) {
+			fachada.controllerAdm.addVendendor(nome,cpf,login,senha);
+		}else {
+			fachada.controllerAdm.addVeterinario(nome,cpf,login,senha);
+		}
 	}
 }
 	
