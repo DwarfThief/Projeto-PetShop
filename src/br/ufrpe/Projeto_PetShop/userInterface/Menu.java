@@ -1,4 +1,4 @@
-package gui;
+package br.ufrpe.Projeto_PetShop.userInterface;
 
 import java.util.Scanner;
 import br.ufrpe.Projeto_PetShop.controller.*;
@@ -9,7 +9,15 @@ public class Menu {
 	private Scanner sc = new Scanner (System.in);
 	private  int escolha;
 	
+	public void login() {
+		System.out.println("Login: ");
+		String login = sc.nextLine();
+		System.out.println("Senha: ");
+		String senha = sc.nextLine();
+		fachada.checkLogin.checagemLogin(login, senha);
+	}
 	public void menu() {
+		login();
 		System.out.print("--------- MENU ---------\n");
 		System.out.print("----- FUNCIONARIO -----\n\n");
 		System.out.print("1) Gerente\n2) Vendedor\n3) Veterinario");

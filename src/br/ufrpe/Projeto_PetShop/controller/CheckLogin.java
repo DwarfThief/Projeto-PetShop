@@ -5,6 +5,7 @@ import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Vendedor;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Veterinario;
+import br.ufrpe.Projeto_PetShop.userInterface.Menu;
 
 public class CheckLogin {
 	private IRepositorioFuncionario instanceRepFuncionario;
@@ -13,30 +14,37 @@ public class CheckLogin {
 		this.instanceRepFuncionario = instanceRepFuncionario;
 	}
 	public void checagemLogin(String login, String senha) {
-		boolean validando = true;
+		boolean validando = false;
+		Funcionario funcionario=null;
 		if(login != null && senha != null) {
 			int pos = 0;
 			do {
 				if(instanceRepFuncionario.getFuncionario(pos) != null) {
 					if(instanceRepFuncionario.getFuncionario(pos).getLogin().equals(login)
 							&& instanceRepFuncionario.getFuncionario(pos).getSenha().equals(senha)) {
-						checkType(instanceRepFuncionario.getFuncionario(pos));
+						funcionario = instanceRepFuncionario.getFuncionario(pos);
+						validando = true;
+						
 					}
 				}else {
-					validando = false;
+					break;
 				}
 				pos++;
-			}while(validando == true);
+			}while(validando == false);
+			if(true) {
+				this.checkType(funcionario);
+			}
 		}
 	}
 	public void checkType(Funcionario funcionario) {
+		Menu menu = new Menu();
 		if(funcionario != null) {
 			if(funcionario instanceof Gerente) {
-				//TODO chamar o GUI para Gerente
+				menu.gerente();
 			}else if(funcionario instanceof Veterinario) {
-				//TODO chamar o GUI para Veterinario
+				menu.veterinario();
 			}else if(funcionario instanceof Vendedor) {
-				//TODO chamar o GUI para Vendendor
+				menu.vendedor();
 			}
 		}
 	}
