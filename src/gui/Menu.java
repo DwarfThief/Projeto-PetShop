@@ -65,7 +65,7 @@ public class Menu {
 	
 	public void gerente() {
 		System.out.print("--------- Gerente ---------\n");
-		System.out.print("1) Cadastrar Cliente\n2) Cadastrar Funcionario");
+		System.out.print("1) Cadastrar Cliente\n2) Cadastrar Funcionario\n3) Cadastrar Animal");
 		escolha = sc.nextInt();
 		if(escolha==1) {
 			cadastroCliente();
@@ -113,7 +113,11 @@ public class Menu {
 
 	public void veterinario() {
 		System.out.print("--------- Veterinario ---------\n\n");
-		//Funcoes do Veterinario
+		/*//Funcoes do Veterinario
+		System.out.println("Informe seu cpf");
+		String cpf = sc.nextLine();
+		//Pesquisar quais consultas ele ta pra poder mostrar
+		System.out.println("1) Consultas marcadas");*/
 	}
 	
 	public void consulta() {
@@ -124,7 +128,7 @@ public class Menu {
 		String veterinario = sc.nextLine();
 		System.out.print("Data da consulta: ");
 		String data = sc.nextLine();
-		//Como passa essas informações pra serem verificadas pela fachada??
+		//Como passar essas informações pra serem verificadas pela fachada??
 		//Tem que tranformar nomeA em Animal, veterinario em Veterinario e data em LocalDateTime
 	}
 	
@@ -141,11 +145,11 @@ public class Menu {
 		sc.nextLine();
 		System.out.print("Sexo: ");
 		char sexo = sc.nextLine().charAt(0);
-		//Como passa essas informações pra serem verificadas pela fachada??
+		//Como passar essas informações pra serem verificadas pela fachada??
 	}
 	
 	public void cadastroAnimal() {
-		System.out.print("------ Cadastro Cliente ------\n\n");
+		System.out.print("------ Cadastro Animal ------\n\n");
 		System.out.print("Nome do dono do animal: ");
 		String nome = sc.nextLine();		
 		System.out.print("\nInformacoes sobre o animal\n");
@@ -156,7 +160,7 @@ public class Menu {
 		sc.nextLine();
 		System.out.print("Sexo: ");
 		char sexoA = sc.nextLine().charAt(0);
-		//Como passa essas informações pra serem verificadas pela fachada??
+		//Como passar essas informações pra serem verificadas pela fachada??
 	}
 	
 	public void cadastroFuncionario() {
@@ -169,7 +173,7 @@ public class Menu {
 		String login = sc.nextLine();
 		System.out.print("Senha: ");
 		String senha = sc.nextLine();
-		//Como passa essas informações pra serem verificadas pela fachada??
+		//Como passar essas informações pra serem verificadas pela fachada??
 	}
 }
 	
