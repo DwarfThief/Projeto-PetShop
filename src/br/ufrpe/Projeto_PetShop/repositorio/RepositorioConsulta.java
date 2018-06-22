@@ -16,9 +16,11 @@ public class RepositorioConsulta implements IRepositorioConsulta{
 	    return instance;
 	}
 	private RepositorioConsulta() {}	
-	private Consulta procurarConsulta (Consulta consulta) {
+	private Consulta procurarConsulta (String veterinario, int dia, int mes, int ano, String nomeAnimal) {
 		for(int i=0;i<consultasTam;i++) {
-			if(consultas[i].equals(consulta)) {
+			if(consultas[i].getTime().getYear() == ano && consultas[i].getTime().getDayOfMonth() == dia 
+				&& consultas[i].getTime().getMonthValue() == mes && consultas[i].getVeterinario().getNome().equals(veterinario) 
+					&& consultas[i].getAnimal().getNome().equals(nomeAnimal)) {
 				return consultas[i];
 			}			
 		}
@@ -34,7 +36,8 @@ public class RepositorioConsulta implements IRepositorioConsulta{
         return -1;
 	}
 	public void addConsulta(Consulta consulta) {
-		if(consulta != null && procurarConsulta(consulta) == null) {
+		if(consulta != null && procurarConsulta(consulta.getVeterinario().getNome(), consulta.getTime().getDayOfMonth(), 
+				consulta.getTime().getMonthValue(), consulta.getTime().getYear(), consulta.getAnimal().getNome()) == null) {
 			if(this.consultasTam == this.consultas.length) {
 				this.duplicaArray();
 			}
@@ -43,8 +46,8 @@ public class RepositorioConsulta implements IRepositorioConsulta{
 		}
 		//TODO exception
 	}	
-	public Consulta getConsulta(Consulta consulta) {
-		return this.procurarConsulta(consulta);
+	public Consulta getConsulta(String veterinario, int dia, int mes, int ano, String nomeAnimal) {
+		return this.procurarConsulta(veterinario, dia, mes, ano, nomeAnimal);
 	}	
 	public void removerConsulta(Consulta consulta) {
 		int i = this.procurarPos(consulta);
