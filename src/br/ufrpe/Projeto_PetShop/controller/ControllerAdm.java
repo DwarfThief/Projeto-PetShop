@@ -29,7 +29,7 @@ public class ControllerAdm {
 	public void cadastrarCliente(String nome, String endereco, String telefone,
 			String cpf, char sexo) {
 		if(nome != null && endereco != null && telefone != null &&
-			cpf !=null && sexo != "".charAt(0)) {
+			cpf !=null) {
 			Cliente cliente = new Cliente(nome, endereco, telefone, cpf, sexo);
 			instanceRepCliente.addCliente(cliente);
 		}		
@@ -47,7 +47,7 @@ public class ControllerAdm {
 		instanceRepCliente.removerCliente(cpf);
 	}
 	public void cadastrarAnimal(String nome, String raca, char sexo, Cliente dono) {
-		if(nome != null && raca != null && sexo!="".charAt(0) && dono != null) {
+		if(nome != null && raca != null && dono != null) {
 			instanceRepAnimal.addAnimal(new Animal(nome, raca, sexo, dono));
 		}
 	}

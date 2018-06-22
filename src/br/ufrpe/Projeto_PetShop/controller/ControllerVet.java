@@ -2,7 +2,9 @@ package br.ufrpe.Projeto_PetShop.controller;
 
 import br.ufrpe.Projeto_PetShop.repositorio.IRepositorioAnimal;
 import br.ufrpe.Projeto_PetShop.repositorio.IRepositorioConsulta;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Animal;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Consulta;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Veterinario;
 
 public class ControllerVet {
 	private IRepositorioAnimal instanceRepAnimal;
@@ -11,7 +13,8 @@ public class ControllerVet {
 		this.instanceRepAnimal = instanceRepAnimal;
 		this.instanceRepConsulta = instanceRepConsulta;
 	}
-	public void addConsulta(Consulta consulta) {
+	public void addConsulta(Animal animal, Veterinario medico) {
+		Consulta consulta = new Consulta(animal, medico);
 		if(consulta!=null) {
 			this.instanceRepConsulta.addConsulta(consulta);
 		}

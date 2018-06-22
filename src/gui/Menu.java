@@ -2,65 +2,43 @@ package gui;
 
 import java.util.Scanner;
 import br.ufrpe.Projeto_PetShop.controller.*;
-import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.*;
 
 public class Menu {
 	private Fachada fachada = Fachada.getInstance();
 	private Scanner sc = new Scanner (System.in);
-	private  int escolha,opcao;
+	private  int escolha;
 	
 	public void menu() {
-		System.out.print("--------- MENU ---------\n\n");
-		System.out.print("1) Funcionário\n2) Cliente");
-		opcao = sc.nextInt();
-		switch(opcao) {
-		case 1:
-			System.out.print("--------- MENU ---------\n");
-			System.out.print("----- FUNCIONARIO -----\n\n");
-			System.out.print("1) Gerente\n2) Vendedor\n3) Veterinario");
-			escolha = sc.nextInt();
-			if(escolha==1) {
-				gerente();
-			}
-			else if(escolha==2){
-				vendedor();
-			}
-			else if(escolha==3) {
-				veterinario();
-			}
-			else {				
-				while(escolha!=1 && escolha!=2 && escolha!=3) {
-					System.out.println("Opcao invalida\nTente novamente");
-					int escolha = sc.nextInt();
-					if(escolha==1) {
-						gerente();
-					}
-					else if(escolha==2){
-						vendedor();
-					}
-					else if(escolha==3) {
-						veterinario();
-					}
+		System.out.print("--------- MENU ---------\n");
+		System.out.print("----- FUNCIONARIO -----\n\n");
+		System.out.print("1) Gerente\n2) Vendedor\n3) Veterinario");
+		escolha = sc.nextInt();
+		sc.nextLine();
+		if(escolha==1) {
+			gerente();
+		}
+		else if(escolha==2){
+			vendedor();
+		}
+		else if(escolha==3) {
+			veterinario();
+		}
+		else {				
+			while(escolha!=1 && escolha!=2 && escolha!=3) {
+				System.out.println("Opcao invalida\nTente novamente");
+				int escolha = sc.nextInt();
+				sc.nextLine();
+				if(escolha==1) {
+					gerente();
+				}
+				else if(escolha==2){
+					vendedor();
+				}
+				else if(escolha==3) {
+					veterinario();
 				}
 			}
-		case 2:
-			System.out.print("--------- MENU ---------\n");
-			System.out.print("-------- CLIENTE --------\n\n");
-			System.out.print("1) Marcar Consulta");
-			escolha = sc.nextInt();
-			if(escolha==1) {
-				consulta();
-			}
-			else {				
-				while(escolha!=1) {
-					System.out.println("Opcao invalida\nTente novamente");
-					int escolha = sc.nextInt();
-					if(escolha==1) {
-						consulta();
-					}
-				}
-			}
-
 		}
 	}
 	
@@ -68,6 +46,7 @@ public class Menu {
 		System.out.print("--------- Gerente ---------\n");
 		System.out.print("1) Cadastrar Cliente\n2) Cadastrar Funcionario\n3) Cadastrar Animal");
 		escolha = sc.nextInt();
+		sc.nextLine();
 		if(escolha==1) {
 			cadastroCliente();
 		}
@@ -80,57 +59,53 @@ public class Menu {
 		else {				
 			while(escolha!=1 && escolha!=2 && escolha!=3) {
 				System.out.println("Opcao invalida\nTente novamente");
-				int escolha = sc.nextInt();
-				if(escolha==1) {
-					cadastroCliente();
-				}
-				else if(escolha==2){
-					cadastroFuncionario();
-				}
-				else if(escolha==3){
-					cadastroAnimal();
-				}
+				gerente();
 			}
 		}
+		gerente();
 	}
 	
 	public void vendedor() {
 		System.out.print("--------- Vendedor ---------\n\n");
-		System.out.print("1) Marcar consulta");
+		System.out.print("1)Cadastrar Cliente\n2)Cadastrar Animal");
 		escolha = sc.nextInt();
-		if(escolha==1) {
-			consulta();
+		sc.nextLine();
+		if(escolha == 1) {
+			cadastroCliente();
+		}else if(escolha == 2) {
+			cadastroAnimal();
 		}
 		else {				
 			while(escolha!=1) {
 				System.out.println("Opcao invalida\nTente novamente");
-				int escolha = sc.nextInt();
-				if(escolha==1) {
-					consulta();
-				}
 			}
 		}
+		vendedor();
 	}
 
 	public void veterinario() {
 		System.out.print("--------- Veterinario ---------\n\n");
-		/*//Funcoes do Veterinario
-		System.out.println("Informe seu cpf");
-		String cpf = sc.nextLine();
-		//TODO Pesquisar quais consultas ele ta pra poder mostrar
-		System.out.println("1) Consultas marcadas");*/
-	}
-	
-	public void consulta() {
-		System.out.print("--------- Consulta ---------\n\n");
-		System.out.print("Nome do animal: ");
-		String nomeA = sc.nextLine();
-		System.out.print("Veterinario que ira atender: ");
+		System.out.print("Veterinario que ira atender(CPF): ");
 		String veterinario = sc.nextLine();
-		System.out.print("Data da consulta: ");
-		String data = sc.nextLine();
-		//TODO Como passar essas informações pra serem verificadas pela fachada??
-		//TODO Tem que tranformar nomeA em Animal, veterinario em Veterinario e data em LocalDateTime
+		Funcionario medico = fachada.controllerAdm.getFuncionario(veterinario);
+		System.out.println("1)Cadastrar Animal\n2)Criar consulta");
+		int escolha = sc.nextInt();
+		sc.nextLine();
+		if(escolha == 1) {
+			cadastroAnimal();
+		}else if(escolha == 2) {
+			consulta(medico);
+		}
+		veterinario();
+	}
+	public void consulta(Funcionario medico) {
+		System.out.print("--------- Consulta ---------\n\n");
+		System.out.print("Cpf do dono: ");
+		String cpf = sc.nextLine();
+		System.out.print("Nome do animal: ");
+		String nome = sc.nextLine();
+		Animal animal = fachada.controllerAdm.getAnimal(cpf, nome);
+		fachada.controllerVet.addConsulta(animal, (Veterinario)medico);
 	}
 	
 	public void cadastroCliente() {
@@ -143,10 +118,9 @@ public class Menu {
 		String telefone = sc.nextLine();
 		System.out.print("CPF: ");
 		String cpf = sc.nextLine();
-		sc.nextLine();
 		System.out.print("Sexo: ");
-		char sexo = sc.nextLine().charAt(0);
-		fachada.controllerAdm.cadastrarCliente(nome, endereco, telefone, cpf, sexo);
+		String sexo = sc.nextLine();
+		fachada.controllerAdm.cadastrarCliente(nome, endereco, telefone, cpf, sexo.charAt(0));
 	}
 	
 	public void cadastroAnimal() {
@@ -159,7 +133,6 @@ public class Menu {
 		String nomeA = sc.nextLine();
 		System.out.print("Raca: ");
 		String raca = sc.nextLine();
-		sc.nextLine();
 		System.out.print("Sexo: ");
 		char sexo = sc.nextLine().charAt(0);
 		fachada.controllerAdm.cadastrarAnimal(nomeA, raca, sexo, dono);
@@ -175,7 +148,7 @@ public class Menu {
 		String login = sc.nextLine();
 		System.out.print("Senha: ");
 		String senha = sc.nextLine();
-		System.out.println("1)Gerente\n2)Vendedo\n3)Veterinario");
+		System.out.println("Tipo de funcionario:\n1)Gerente\n2)Vendedor\n3)Veterinario");
 		int tipo = sc.nextInt();
 		if(tipo == 1) {
 			fachada.controllerAdm.addGerente(nome,cpf,login,senha);
