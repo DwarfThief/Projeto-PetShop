@@ -16,10 +16,11 @@ public class Fachada {
 	private IRepositorioConsulta instanceRepConsulta = RepositorioConsulta.getInstance();
 	private IRepositorioFuncionario instanceRepFuncionario = RepositorioFuncionario.getInstance();
 	
-	public ControllerAdm controllerAdm;
-	public CheckLogin checkLogin;
-	public ControllerVet controllerVet;
-	public ControllerVendendor controllerVendendor;
+	private ControladorDeAnimais controladorDeAnimais;
+	private	ControladorDeConsultas controladorDeConsultas;
+	private ControladorDeFuncionarios controladorDeFuncionarios;
+	private ControladorDeClientes controladorDeClientes;
+	private CheckLogin checkLogin;
 	
 	public static Fachada getInstance() {
 	    if (instance == null) {
@@ -28,11 +29,26 @@ public class Fachada {
 	    return instance;
 	}
 	private Fachada () {
-		this.controllerAdm = new ControllerAdm(this.instanceRepCliente, this.instanceRepConsulta
-				, this.instanceRepAnimal, this.instanceRepFuncionario);
+		this.controladorDeAnimais = new ControladorDeAnimais(this.instanceRepAnimal);
+		this.controladorDeConsultas = new ControladorDeConsultas(this.instanceRepConsulta);
+		this.controladorDeFuncionarios = new ControladorDeFuncionarios(this.instanceRepFuncionario);
+		this.controladorDeClientes = new ControladorDeClientes(this.instanceRepCliente);
 		this.checkLogin = new CheckLogin(this.instanceRepFuncionario);
-		this.controllerVet = new ControllerVet(this.instanceRepConsulta, this.instanceRepAnimal);
-		this.controllerVendendor = new ControllerVendendor(this.instanceRepCliente, this.instanceRepConsulta, instanceRepAnimal);
-			
+	}
+	
+	public ControladorDeAnimais contAnimais() {
+		return this.controladorDeAnimais;
+	}
+	public ControladorDeConsultas contConsultas() {
+		return this.controladorDeConsultas;
+	}
+	public ControladorDeFuncionarios contFuncionarios() {
+		return this.controladorDeFuncionarios;
+	}
+	public ControladorDeClientes contClientes() {
+		return this.controladorDeClientes;
+	}
+	public CheckLogin checkLogin() {
+		return this.checkLogin;
 	}
 }
