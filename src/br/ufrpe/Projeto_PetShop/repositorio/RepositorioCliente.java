@@ -32,7 +32,8 @@ public class RepositorioCliente implements IRepositorioCliente  {
         	}
         }
         return clientesTam;
-	}	
+	}
+	@Override
 	public void addCliente(Cliente cliente) {
 		if(cliente != null && procurarCliente(cliente.getCpf()) == null) {
 			if(this.clientesTam == this.clientes.length) {
@@ -42,10 +43,12 @@ public class RepositorioCliente implements IRepositorioCliente  {
 			this.clientesTam++;
 		}
 		//TODO exception
-	}	
+	}
+	@Override
 	public Cliente getCliente(String cpf) {
 		return this.procurarCliente(cpf);
-	}	
+	}
+	@Override
 	public void removerCliente(String cpf) {
 		int i = this.procurarPos(cpf);
 		if (i != this.clientesTam) {
