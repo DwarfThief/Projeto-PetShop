@@ -1,6 +1,8 @@
 package br.ufrpe.Projeto_PetShop;
 
 import java.io.IOException;
+
+import br.ufrpe.Projeto_PetShop.GUI.telaLogin.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,7 +25,7 @@ public class MainApp extends Application{
         LoginScene();
 	}
 	/**
-     * Inicializa o layout base
+     * Inicializa o layout base.
      */
 	public void initRootLayout() {
         try {
@@ -52,17 +54,18 @@ public class MainApp extends Application{
 
             // Define a tela de Login dentro do root layout.
             rootLayout.setCenter(loginScene);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
 	}
 	
 	/**
-	 * Retorna a tela de Login.
+	 * Retorna o Stage.
 	 * @return
 	 */
-	public Stage getPrimaryStage() {
-		return primaryStage;
+	public BorderPane getRootLayout() {
+		return this.rootLayout;
 	}
 	public static void main(String[] args) {
 		launch(args);

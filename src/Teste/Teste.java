@@ -1,16 +1,22 @@
 package Teste;
+import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
+import br.ufrpe.Projeto_PetShop.exceptions.CadastroInvalidoException;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
-import br.ufrpe.Projeto_PetShop.userInterface.Menu;
 
 public class Teste {
 
 	public static void main(String[] args) {
-		Gerente gerente =new Gerente("NOME", "cpf", "LOGIN", "SENHA");
+		Funcionario gerente =new Gerente("NOME", "cpf", "LOGIN", "SENHA");
 		Fachada fachada = Fachada.getInstance();
-		fachada.controllerAdm.addGerente(gerente);
-		Menu menu = new Menu();
-		menu.menu();
+		try {
+			fachada.contFuncionarios().addFuncionario(gerente);
+		}catch(CadastroInvalidoException cadastroInvalidoException) {
+			System.out.println(cadastroInvalidoException.getMessage());
+		}
+		MainApp mainApp = new MainApp();
+		mainApp.main(args);
 	}
 
 }
