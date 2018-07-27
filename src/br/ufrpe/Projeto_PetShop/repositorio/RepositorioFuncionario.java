@@ -1,5 +1,6 @@
 package br.ufrpe.Projeto_PetShop.repositorio;
 
+import br.ufrpe.Projeto_PetShop.exceptions.FuncionarioJaExisteException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 
 public class RepositorioFuncionario implements IRepositorioFuncionario{
@@ -16,7 +17,7 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	    return instance;
 	}
 	private RepositorioFuncionario() {}
-	private Funcionario procurarFuncionario(String cpf) {
+	private Funcionario procurarFuncionario(String cpf){
 		for(int i = 0; i < funcionariosTam; i++) {
 			if(funcionarios[i].getCpf().equals(cpf)) {
 				return funcionarios[i];
@@ -33,25 +34,34 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
         }
         return funcionariosTam;
 	}
-	public void addFuncionario(Funcionario funcionario) {
+	/**
+	 * Add o Funcionario no banco de Dados.
+	 * @throws FuncionarioJaExisteException;
+	 */
+	@Override
+	public void addFuncionario(Funcionario funcionario) throws FuncionarioJaExisteException{
 		if(funcionario != null && procurarFuncionario(funcionario.getCpf()) == null) {
 			if(this.funcionariosTam == this.funcionarios.length) {
 				this.duplicaArray();
 			}
 			this.funcionarios[funcionariosTam] = funcionario;
 			this.funcionariosTam++;
+		}else {
+			throw new FuncionarioJaExisteException(funcionario.getCpf());
 		}
-		//TODO exception
 	}
-	public Funcionario getFuncionario(String cpf) {
+	@Override
+	public Funcionario getFuncionario(String cpf){
 		return this.procurarFuncionario(cpf);
 	}
+	@Override
 	public Funcionario getFuncionario(int pos) {
 		if(pos < this.funcionariosTam) {
 			return this.funcionarios[pos];
 		}
 		return null;
 	}
+	@Override
 	public void remover(String cpf) {
 		int i = this.procurarPos(cpf);
 		if (i != this.funcionariosTam) {

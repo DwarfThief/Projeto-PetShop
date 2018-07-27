@@ -1,8 +1,6 @@
 package br.ufrpe.Projeto_PetShop;
 
 import java.io.IOException;
-
-import br.ufrpe.Projeto_PetShop.GUI.telaLogin.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
