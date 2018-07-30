@@ -1,5 +1,6 @@
 package br.ufrpe.Projeto_PetShop.repositorio;
 
+import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Animal;
 
 public class RepositorioAnimal implements IRepositorioAnimal {
@@ -25,7 +26,6 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 			this.animais[animaisTam] = animal;
 			this.animaisTam++;
 		}
-		// TODO exceptions
 	}
 	private void duplicarArray() {
 		if (this.animais != null && this.animais.length > 0) {
@@ -36,8 +36,13 @@ public class RepositorioAnimal implements IRepositorioAnimal {
             this.animais = arrayDuplicado;
         }		
 	}
-	public Animal getAnimal(String cpf, String nome) {
-		return this.procurarAnimal(cpf, nome);
+	public Animal getAnimal(String cpf, String nome) throws NaoEncontradoException{
+		Animal i = procurarAnimal(cpf, nome);
+		if(i!= null) {
+			return i;
+		}else {
+			throw new NaoEncontradoException("Animal");
+		}
 	}
 	@Override
 	public Animal[] getAnimaisCliente(String cpf) {
@@ -68,14 +73,14 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 		return null;
 	}
 	@Override
-	public void remover(String cpf, String nome) {
+	public void remover(String cpf, String nome) throws NaoEncontradoException {
 		int i = this.procurarPos(cpf, nome);
 		if (i != this.animaisTam) {
             this.animais[i] = this.animais[this.animaisTam - 1];
             this.animais[this.animaisTam - 1] = null;
             this.animaisTam = this.animaisTam - 1;
         } else {
-            //TODO exception
+            throw new NaoEncontradoException("Animal");
         }
 	}
 	private int procurarPos(String cpf, String nome) {
@@ -87,5 +92,4 @@ public class RepositorioAnimal implements IRepositorioAnimal {
         }
         return animaisTam;
 	}
-	
 }
