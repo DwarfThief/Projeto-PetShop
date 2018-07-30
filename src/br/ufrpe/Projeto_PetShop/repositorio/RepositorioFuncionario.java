@@ -54,6 +54,11 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	public Funcionario getFuncionario(String cpf){
 		return this.procurarFuncionario(cpf);
 	}
+	/**
+	 * Retorna funcionario por posicao no Array 
+	 * @return Funcionario pela posicao
+	 * @return null caso nao encontre
+	 */
 	@Override
 	public Funcionario getFuncionario(int pos) {
 		if(pos < this.funcionariosTam) {

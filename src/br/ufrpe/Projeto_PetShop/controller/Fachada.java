@@ -21,7 +21,10 @@ public class Fachada {
 	private ControladorDeFuncionarios controladorDeFuncionarios;
 	private ControladorDeClientes controladorDeClientes;
 	private CheckLogin checkLogin;
-	
+	/**
+	 * Retorna instance da fachada, assim limitando sua criação para uma única
+	 * @return instance
+	 */
 	public static Fachada getInstance() {
 	    if (instance == null) {
 	      instance = new Fachada();
@@ -35,19 +38,38 @@ public class Fachada {
 		this.controladorDeClientes = new ControladorDeClientes(this.instanceRepCliente);
 		this.checkLogin = new CheckLogin(this.instanceRepFuncionario);
 	}
-	
+	/**
+	 * Acesso ao controladorDeAnimais
+	 * @return controladorDeAnimais
+	 */
 	public ControladorDeAnimais contAnimais() {
 		return this.controladorDeAnimais;
 	}
+	/**
+	 * Acesso ao controladorDeConsultas
+	 * @return controladorDeConsultas
+	 */
 	public ControladorDeConsultas contConsultas() {
 		return this.controladorDeConsultas;
 	}
+	/**
+	 * Acesso ao controladorDeFuncionarios
+	 * @return controladorDeFuncionarios
+	 */
 	public ControladorDeFuncionarios contFuncionarios() {
 		return this.controladorDeFuncionarios;
 	}
+	/**
+	 * Acesso ao controladorDeClientes
+	 * @return controladorDeClientes
+	 */
 	public ControladorDeClientes contClientes() {
 		return this.controladorDeClientes;
 	}
+	/**
+	 * Acesso ao checkLogin
+	 * @return checkLogin
+	 */
 	public CheckLogin checkLogin() {
 		return this.checkLogin;
 	}
