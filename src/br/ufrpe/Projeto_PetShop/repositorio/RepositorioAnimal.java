@@ -19,7 +19,7 @@ public class RepositorioAnimal implements IRepositorioAnimal {
 	private RepositorioAnimal() {}
 	@Override
 	public void addAnimal(Animal animal) {
-		if(animal != null) {
+		if(animal == null) {
 			if(this.animaisTam == this.animais.length) {
 				this.duplicarArray();
 			}

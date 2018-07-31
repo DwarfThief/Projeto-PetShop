@@ -1,5 +1,7 @@
 package br.ufrpe.Projeto_PetShop.repositorio;
 
+import br.ufrpe.Projeto_PetShop.exceptions.ClienteJaExisteException;
+import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 
 public class RepositorioCliente implements IRepositorioCliente  {
@@ -15,7 +17,12 @@ public class RepositorioCliente implements IRepositorioCliente  {
 	    return instance;
 	}
 	private RepositorioCliente () {}
-	
+	/**
+	 * Procura se o cpf usado como parametro esta cadastrado em algum cliente.
+	 * @param cpf
+	 * @return cliente, caso encontre um cliente com esse cpf.
+	 * @return null, caso não exista cliente com esse cpf.
+	 */
 	private Cliente procurarCliente (String cpf) {
 		for(int i=0;i<clientesTam;i++) {
 			if(clientes[i].getCpf().equals(cpf)) {
@@ -23,7 +30,12 @@ public class RepositorioCliente implements IRepositorioCliente  {
 			}
 		}
 		return null;
-	}	
+	}
+	/**
+	 * Procura a posicao de determinado cliente a partir do seu cpf.
+	 * @param cpf
+	 * @return i
+	 */
 	private int procurarPos(String cpf) {
 		int i = 0;
         for(; i<this.clientesTam; i++) {
@@ -31,34 +43,45 @@ public class RepositorioCliente implements IRepositorioCliente  {
         		return i;
         	}
         }
-        return clientesTam;
+        return i;
 	}
 	@Override
-	public void addCliente(Cliente cliente) {
+	public void addCliente(Cliente cliente) throws ClienteJaExisteException {
 		if(cliente != null && procurarCliente(cliente.getCpf()) == null) {
-			if(this.clientesTam == this.clientes.length) {
-				this.duplicaArray();
+			if(procurarCliente(cliente.getCpf()) == null) {
+				if(this.clientesTam == this.clientes.length) {
+					this.duplicaArray();
+				}
+				this.clientes[clientesTam]=cliente;
+				this.clientesTam++;
+			}else {
+				throw new ClienteJaExisteException(cliente.getCpf());
 			}
-			this.clientes[clientesTam]=cliente;
-			this.clientesTam++;
 		}
-		//TODO exception
 	}
 	@Override
-	public Cliente getCliente(String cpf) {
-		return this.procurarCliente(cpf);
+	public Cliente getCliente(String cpf) throws NaoEncontradoException {
+		Cliente c = this.procurarCliente(cpf);
+		if(c!=null) {
+			return c;
+		}else {
+			throw new NaoEncontradoException("Cliente");
+		}
 	}
 	@Override
-	public void removerCliente(String cpf) {
+	public void removerCliente(String cpf) throws NaoEncontradoException {
 		int i = this.procurarPos(cpf);
 		if (i != this.clientesTam) {
             this.clientes[i] = this.clientes[this.clientesTam - 1];
             this.clientes[this.clientesTam - 1] = null;
             this.clientesTam = this.clientesTam - 1;
-        } else {
-        	//TODO exception
+        }else {
+        	throw new NaoEncontradoException("Cliente");
         }
-	}	
+	}
+	/**
+	 * Serve para duplicar o tamanho do arry do repositório
+	 */
 	private void duplicaArray() {
         if (this.clientes != null && this.clientes.length > 0) {
             Cliente[] arrayDuplicado = new Cliente[this.clientes.length * 2];
