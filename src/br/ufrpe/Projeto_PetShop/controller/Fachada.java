@@ -36,7 +36,7 @@ public class Fachada {
 		this.controladorDeConsultas = new ControladorDeConsultas(this.instanceRepConsulta);
 		this.controladorDeFuncionarios = new ControladorDeFuncionarios(this.instanceRepFuncionario);
 		this.controladorDeClientes = new ControladorDeClientes(this.instanceRepCliente);
-		this.checkLogin = new CheckLogin(this.instanceRepFuncionario);
+		this.checkLogin = new CheckLogin();
 	}
 	/**
 	 * Acesso ao controladorDeAnimais
