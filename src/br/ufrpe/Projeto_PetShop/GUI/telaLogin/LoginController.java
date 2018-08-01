@@ -5,6 +5,8 @@ import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.LoginInvalidoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Vendedor;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Veterinario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -46,11 +48,15 @@ public class LoginController {
 		this.okClicked = true;
 		String loginTxt = login.getText();
 		String senhaTxt = senha.getText();
-		/*try {
+		try {
 			Funcionario f = Fachada.getInstance().checkLogin().checagemLogin(loginTxt, senhaTxt);
-			if(f instanceof Gerente == true) {*/
+			if(f instanceof Gerente == true) {
 				ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/adm/menu/menuScene.fxml");
-			/*}
+			}if(f instanceof Veterinario == true) {
+				//TODO mudar para o menu do Veterinario
+			}if(f instanceof Vendedor == true) {
+				//TODO mudar para o menu do Vendedor
+			}
 		}catch(LoginInvalidoException lie) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Login invalido.");
@@ -58,6 +64,6 @@ public class LoginController {
 			alert.setContentText(lie.getMessage());
 
 			alert.showAndWait();
-		}*/
+		}
 	}
 }

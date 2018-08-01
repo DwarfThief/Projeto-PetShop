@@ -61,6 +61,7 @@ public class ScreenManager {
 			cena = FXMLLoader.load(getClass().getResource(localizacao));
 			this.centerScene = new Scene(cena);
 	    	this.showCenterScreen();
+	    	// Dá ao controlador acesso à the main app.
 		} catch (IOException e) {
 			e.printStackTrace();
 		}    	

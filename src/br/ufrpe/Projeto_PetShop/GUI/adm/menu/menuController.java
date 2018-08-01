@@ -4,7 +4,7 @@ import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class menuController {
+public class MenuController {
 	/**
 	 * Inicializa o controlador quando o FXML é carregado.
 	 */

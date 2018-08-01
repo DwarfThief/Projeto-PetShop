@@ -9,10 +9,9 @@ import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
 public class Teste {
 
 	public static void main(String[] args) {
-		Funcionario gerente =new Gerente("NOME", "cpf", "LOGIN", "SENHA");
-		Fachada fachada = Fachada.getInstance();
+		Funcionario gerente = new Gerente("NOME", "cpf", "LOGIN", "SENHA");
 		try {
-			fachada.contFuncionarios().addFuncionario(gerente);
+			Fachada.getInstance().contFuncionarios().addFuncionario(gerente);
 		}catch(CadastroInvalidoException cadastroInvalidoException) {
 			System.out.println(cadastroInvalidoException.getMessage());
 		}catch(FuncionarioJaExisteException fjee) {

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
+import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.create.FuncionarioCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit.FuncionarioEditDialogController;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,7 +28,7 @@ public class ControladorTabelaFuncionarios {
 	    private TableColumn<Funcionario, String> cpfTableView;
 
 	    @FXML
-	    private Label funcaoGriid;
+	    private Label funcaoGrid;
 	    @FXML
 	    private Label nomeGrid;
 	    @FXML
@@ -39,8 +41,8 @@ public class ControladorTabelaFuncionarios {
 	    @FXML
 	    private void iniatilize() {
 	    	//TODO implementar a lista no TableView
-	    	/*nomeTableView.setCellValueFactory(cellData -> cellData.getValue().getNome());
-	    	nomeTableView.setCellValueFactory(cellData -> cellData.getValue().getCpf());*/
+	    	nomeTableView.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("nome"));
+	    	cpfTableView.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("cpf"));
 	    }
 	    @FXML
 		private void handleNew(ActionEvent event) {
@@ -54,6 +56,9 @@ public class ControladorTabelaFuncionarios {
 		private void handleDel(ActionEvent event) {
 	    	
 	    }
+	    /**
+	     * Abre o dialog para cadastrar um novo cliente
+	     */
 	    private void abrirNewDialog() {
 	    	try {
 	    		FXMLLoader loader = new FXMLLoader();
@@ -61,7 +66,9 @@ public class ControladorTabelaFuncionarios {
 		        AnchorPane page = (AnchorPane)loader.load();
 		    	// Cria o palco dialogStage.
 		        Stage dialogStage = new Stage();
-		        dialogStage.setTitle("Edit Person");
+		        FuncionarioCreateDialog fooController = (FuncionarioCreateDialog) loader.getController();
+		        fooController.setDialogStage(dialogStage);
+		        dialogStage.setTitle("Cadastrar funcionário");
 		        dialogStage.initModality(Modality.WINDOW_MODAL);
 		        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 		        Scene scene = new Scene(page);
