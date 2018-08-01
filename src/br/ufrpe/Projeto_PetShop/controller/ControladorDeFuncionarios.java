@@ -23,6 +23,7 @@ public class ControladorDeFuncionarios {
 	public void addFuncionario(Funcionario funcionario) throws CadastroInvalidoException, FuncionarioJaExisteException {
 		if(funcionario!=null && funcionario.getCpf() != null && funcionario.getLogin() != null 
 				&& funcionario.getNome() != null && funcionario.getSenha() != null) {
+			instanceRepFuncionario.addFuncionario(funcionario);
 		}else {
 			throw new CadastroInvalidoException();
 		}

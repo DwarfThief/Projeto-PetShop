@@ -48,7 +48,7 @@ public class LoginController {
 		String senhaTxt = senha.getText();
 		/*try {
 			Funcionario f = Fachada.getInstance().checkLogin().checagemLogin(loginTxt, senhaTxt);
-			if(f instanceof Gerente) {*/
+			if(f instanceof Gerente == true) {*/
 				ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/adm/menu/menuScene.fxml");
 			/*}
 		}catch(LoginInvalidoException lie) {
