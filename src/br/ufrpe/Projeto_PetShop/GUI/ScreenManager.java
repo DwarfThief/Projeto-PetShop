@@ -4,7 +4,6 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ScreenManager {
@@ -20,8 +19,11 @@ public class ScreenManager {
         
         return instance; 
     }
+    /**
+     * Construtor privado, sempre abre com a tela de login
+     */
     private ScreenManager() {
-        // Construtor privado para evitar instanciação
+        // Construtor privado para evitar multiplas instancias
         
         try {
             AnchorPane center = FXMLLoader.load(getClass().getResource(
@@ -33,16 +35,26 @@ public class ScreenManager {
         }
         
     }
-
+    /**
+     * Retorna o stage principal
+     * @return mainStage
+     */
     public Stage getMainStage() {
         return mainStage;
     }
-
+    /**
+     * Muda o Stage
+     * @param mainStage
+     */
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
         // configurando título da app
         mainStage.setTitle("Transições entre telas");
     }
+    /**
+     * Muda a cena central que sera exibida, precisa apenas passar como parametro uma String com a localizacao do arquivo .fxml
+     * @param localizacao
+     */
     public void setCenterScene(String localizacao) {
     	AnchorPane cena;
 		try {
@@ -53,6 +65,9 @@ public class ScreenManager {
 			e.printStackTrace();
 		}    	
     }
+    /**
+     * Mostra a cena
+     */
     public void showCenterScreen() {
         this.mainStage.setScene(this.centerScene);
         this.mainStage.show();

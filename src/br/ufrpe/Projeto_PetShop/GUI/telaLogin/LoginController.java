@@ -1,7 +1,5 @@
 package br.ufrpe.Projeto_PetShop.GUI.telaLogin;
 
-import java.io.IOException;
-
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.LoginInvalidoException;
@@ -9,12 +7,9 @@ import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.PasswordField;
 
 public class LoginController {
@@ -51,11 +46,11 @@ public class LoginController {
 		this.okClicked = true;
 		String loginTxt = login.getText();
 		String senhaTxt = senha.getText();
-		try {
+		/*try {
 			Funcionario f = Fachada.getInstance().checkLogin().checagemLogin(loginTxt, senhaTxt);
-			if(f instanceof Gerente) {
-			ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/adm/menu/menuScene.fxml");
-			}
+			if(f instanceof Gerente) {*/
+				ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/adm/menu/menuScene.fxml");
+			/*}
 		}catch(LoginInvalidoException lie) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Login invalido.");
@@ -63,6 +58,6 @@ public class LoginController {
 			alert.setContentText(lie.getMessage());
 
 			alert.showAndWait();
-		}
+		}*/
 	}
 }

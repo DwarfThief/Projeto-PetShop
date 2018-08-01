@@ -6,17 +6,17 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.Projeto_PetShop.GUI.adm.menu.menuController">
    <children>
-      <Button fx:id="clientesButton" layoutX="118.0" layoutY="184.0" mnemonicParsing="false" text="Clientes">
+      <Button layoutX="118.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleClientesButton" text="Clientes">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="funcionariosButton" layoutX="222.0" layoutY="184.0" mnemonicParsing="false" text="Funcionários">
+      <Button layoutX="222.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleFuncionariosButton" text="Funcionários">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="consultasButton" layoutX="370.0" layoutY="184.0" mnemonicParsing="false" text="Consultas">
+      <Button layoutX="370.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleConsultasButton" text="Consultas">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
