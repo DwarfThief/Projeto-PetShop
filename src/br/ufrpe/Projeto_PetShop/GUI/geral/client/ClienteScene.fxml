@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.Projeto_PetShop.GUI.geral.ControladorClienteScene">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.Projeto_PetShop.GUI.geral.client.ControladorClienteScene">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -75,32 +75,32 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button layoutX="34.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleNewClient" prefHeight="26.0" prefWidth="134.0" text="Cadastrar cliente" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="249.0">
+                  <Button layoutX="63.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleNewClient" text="Criar novo cliente" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="215.0">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="175.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleEditClient" prefHeight="26.0" prefWidth="108.0" text="Editar cliente" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="134.0">
+                  <Button layoutX="209.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleEditClient" prefHeight="26.0" prefWidth="108.0" text="Editar cliente" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="100.0">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="288.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleDelClient" prefHeight="26.0" prefWidth="126.0" text="Deletar Cliente" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="3.0">
+                  <Button layoutX="329.0" layoutY="318.0" mnemonicParsing="false" onAction="#handleDelClient" prefHeight="26.0" prefWidth="74.0" text="Deletar" AnchorPane.bottomAnchor="54.0" AnchorPane.rightAnchor="14.0">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="34.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleNewAnimal" prefHeight="26.0" prefWidth="134.0" text="Cadastrar animal">
+                  <Button layoutY="358.0" mnemonicParsing="false" onAction="#handleNewAnimal" prefHeight="26.0" prefWidth="175.0" text="Cadastrar novo animal">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="293.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleDelAnimal" prefHeight="26.0" prefWidth="117.0" text="Deletar animal">
+                  <Button layoutX="295.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleDelAnimal" prefHeight="26.0" prefWidth="117.0" text="Deletar animal">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button layoutX="175.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleEditAnimal" text="Editar animal">
+                  <Button layoutX="180.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleEditAnimal" text="Editar animal">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
