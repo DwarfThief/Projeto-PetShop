@@ -3,9 +3,10 @@ package br.ufrpe.Projeto_PetShop.GUI.geral.client;
 import java.io.IOException;
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
-import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.create.FuncionarioCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit.FuncionarioEditDialogController;
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.create.ControladorAnimalCreateDialog;
+import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.create.ControladorClientCreateDialog;
+import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.edit.ControladorClientEditDialog;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,17 +43,21 @@ public class ControladorClienteScene {
 	    	//nomeTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
 	    	//cpfTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("cpf"));
 	    }
+	    /**
+	     * Evento para o botão "Cadastrar cliente"
+	     * @param event
+	     */
 	    @FXML
 		private void handleNewClient(ActionEvent event) {
 	    	try {
 	    		FXMLLoader loader = new FXMLLoader();
-		        //TODO loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/create/ClientCreateDialog.fxml"));
+		        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/cliente/create/ClientCreateDialog.fxml"));
 		        AnchorPane page = (AnchorPane)loader.load();
 		    	// Cria o palco dialogStage.
 		        Stage dialogStage = new Stage();
-		        FuncionarioCreateDialog fooController = (FuncionarioCreateDialog) loader.getController();
+		        ControladorClientCreateDialog fooController = (ControladorClientCreateDialog) loader.getController();
 		        fooController.setDialogStage(dialogStage);
-		        dialogStage.setTitle("Cadastrar funcionário");
+		        dialogStage.setTitle("Cadastrar cliente");
 		        dialogStage.initModality(Modality.WINDOW_MODAL);
 		        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 		        Scene scene = new Scene(page);
@@ -77,7 +82,9 @@ public class ControladorClienteScene {
 			        AnchorPane page = (AnchorPane)loader.load();
 			    	// Cria o palco dialogStage.
 			        Stage dialogStage = new Stage();
-			        dialogStage.setTitle("Edit Person");
+			        ControladorClientEditDialog fooController = (ControladorClientEditDialog) loader.getController();
+			        fooController.setDialogStage(dialogStage);
+			        dialogStage.setTitle("Editar cliente");
 			        dialogStage.initModality(Modality.WINDOW_MODAL);
 			        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 			        Scene scene = new Scene(page);
@@ -96,6 +103,10 @@ public class ControladorClienteScene {
 	    		this.alertaClienteNaoSelecionado();
 	    	}
 	    }
+	    /**
+	     * Evento para o botão "Deletar cliente"
+	     * @param event
+	     */
 	    @FXML
 	    private void handleDelClient(ActionEvent event) {
 	    	this.alertaClienteNaoSelecionado();
@@ -113,8 +124,8 @@ public class ControladorClienteScene {
 			        AnchorPane page = (AnchorPane)loader.load();
 			    	// Cria o palco dialogStage.
 			        Stage dialogStage = new Stage();
-//			        ControladorAnimalCreateDialog fooController = (ControladorAnimalCreateDialog) loader.getController();
-//			        fooController.setDialogStage(dialogStage);
+			        ControladorAnimalCreateDialog fooController = (ControladorAnimalCreateDialog) loader.getController();
+			        fooController.setDialogStage(dialogStage);
 			        dialogStage.setTitle("Cadastrar animal");
 			        dialogStage.initModality(Modality.WINDOW_MODAL);
 			        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
@@ -166,6 +177,10 @@ public class ControladorClienteScene {
 				alert.showAndWait();
 	    	}
 	    }
+	    /**
+	     * Evento para o botão "Deletar animal"
+	     * @param event
+	     */
 	    @FXML
 	    private void handleDelAnimal(ActionEvent event) {
 	    	/*
