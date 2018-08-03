@@ -14,7 +14,7 @@ public class MenuController {
 	
 	@FXML
 	private void handleClientesButton(ActionEvent event) {
-		
+		ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/geral/client/ClienteScene.fxml");
 	}
 	@FXML
 	private void handleFuncionariosButton(ActionEvent event) {

@@ -3,9 +3,6 @@ package br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.RadioButton;
 
 

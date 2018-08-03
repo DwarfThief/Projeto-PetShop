@@ -49,7 +49,7 @@ public class ScreenManager {
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
         // configurando título da app
-        mainStage.setTitle("Transições entre telas");
+        mainStage.setTitle("Petshop");
     }
     /**
      * Muda a cena central que sera exibida, precisa apenas passar como parametro uma String com a localizacao do arquivo .fxml
