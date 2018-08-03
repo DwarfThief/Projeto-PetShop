@@ -83,6 +83,6 @@ public class ControladorAnimalCreateDialog {
     private void handleMacho(ActionEvent event) {
     	machoRadioButton.setSelected(true);
     	femeaRadioButton.setSelected(false);
-    	femeaRadioButton.requestFocus();
+    	machoRadioButton.requestFocus();
     }
 }

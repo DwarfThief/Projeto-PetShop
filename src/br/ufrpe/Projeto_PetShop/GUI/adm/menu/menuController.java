@@ -22,6 +22,6 @@ public class MenuController {
 	}
 	@FXML
 	private void handleConsultasButton(ActionEvent event) {
-		
+		//TODO
 	}
 }
