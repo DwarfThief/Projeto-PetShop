@@ -52,10 +52,8 @@ public class LoginController {
 			Funcionario f = Fachada.getInstance().checkLogin().checagemLogin(loginTxt, senhaTxt);
 			if(f instanceof Gerente == true) {
 				ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/adm/menu/menuScene.fxml");
-			}if(f instanceof Veterinario == true) {
-				//TODO mudar para o menu do Veterinario
-			}if(f instanceof Vendedor == true) {
-				//TODO mudar para o menu do Vendedor
+			}else if(f instanceof Vendedor == true || f instanceof Veterinario == true) {
+				ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/CenaPrincipal.fxml");
 			}
 		}catch(LoginInvalidoException lie) {
 			Alert alert = new Alert(AlertType.INFORMATION);

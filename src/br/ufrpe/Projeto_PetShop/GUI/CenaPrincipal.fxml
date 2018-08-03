@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.Projeto_PetShop.GUI.ControladorCenaPrincipal">
+   <children>
+      <Button layoutX="199.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleClientesButton" text="Clientes">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="306.0" layoutY="184.0" mnemonicParsing="false" onAction="#handleConsultasButton" text="Consultas">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
