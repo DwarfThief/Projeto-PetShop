@@ -90,6 +90,7 @@ public class ControladorClientCreateDialog {
 			
 			try {
 				Fachada.getInstance().contClientes().cadastrarCliente(c);
+				this.dialogStage.close();
 			} catch (NaoEncontradoException | CadastroInvalidoException e) {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Ops...");
@@ -105,6 +106,13 @@ public class ControladorClientCreateDialog {
 
 				alert.showAndWait();
 			}
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Ops...");
+			alert.setHeaderText(null);
+			alert.setContentText("Parece que você não fez o cadastro corretamente, preencha tudo.");
+
+			alert.showAndWait();
 		}
 	}
 	/**

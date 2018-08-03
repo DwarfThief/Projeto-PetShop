@@ -1,9 +1,14 @@
 package br.ufrpe.Projeto_PetShop.GUI;
 
 import java.io.IOException;
+
+import br.ufrpe.Projeto_PetShop.MainApp;
+import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.ControladorTabelaFuncionarios;
+import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.create.FuncionarioCreateDialog;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ScreenManager {
@@ -72,5 +77,26 @@ public class ScreenManager {
     public void showCenterScreen() {
         this.mainStage.setScene(this.centerScene);
         this.mainStage.show();
+    }
+    public void funcionarioCena() {
+    	try {
+    		FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/tabelaFuncionarios.fxml"));
+	        AnchorPane page = (AnchorPane)loader.load();
+	    	// Cria o palco dialogStage.
+	        Stage dialogStage = new Stage();
+	        ControladorTabelaFuncionarios fooController = (ControladorTabelaFuncionarios) loader.getController();
+	        fooController.carregarLista();
+	        fooController.showPersonDetails(null);
+	        dialogStage.setTitle("Cadastrar funcionário");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+	        // Mostra a janela e espera até o usuário fechar.
+	        dialogStage.showAndWait();
+    	}catch(IOException e) {
+    		e.printStackTrace();
+    	}
     }
 }

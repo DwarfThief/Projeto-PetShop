@@ -20,7 +20,7 @@
                   <TableView fx:id="personTable" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
                       <TableColumn fx:id="nomeTableView" prefWidth="88.0" text="Nome" />
-                      <TableColumn fx:id="cpfTableView" prefWidth="86.0" text="Cargo" />
+                      <TableColumn fx:id="cpfTableView" prefWidth="86.0" text="CPF" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -93,7 +93,7 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <Label fx:id="cargoGrid" text="Label" GridPane.columnIndex="1">
+                        <Label fx:id="funcaoGrid" text="Label" GridPane.columnIndex="1">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
                            </font>

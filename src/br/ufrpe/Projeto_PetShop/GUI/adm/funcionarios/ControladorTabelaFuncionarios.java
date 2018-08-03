@@ -6,7 +6,12 @@ import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
 import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.create.FuncionarioCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit.FuncionarioEditDialogController;
+import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
+import br.ufrpe.Projeto_PetShop.repositorio.beans.Vendedor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,11 +27,12 @@ import javafx.stage.Stage;
 public class ControladorTabelaFuncionarios {
 	 	@FXML
 	    private TableView<Funcionario> personTable;
+	 	private final ObservableList<Funcionario> data = FXCollections.observableArrayList(Fachada.getInstance().contFuncionarios().getFuncionarioArray());
 	    @FXML
 	    private TableColumn<Funcionario, String> nomeTableView;
 	    @FXML
 	    private TableColumn<Funcionario, String> cpfTableView;
-
+	    
 	    @FXML
 	    private Label funcaoGrid;
 	    @FXML
@@ -40,9 +46,14 @@ public class ControladorTabelaFuncionarios {
 	    
 	    @FXML
 	    private void iniatilize() {
-	    	//TODO implementar a lista no TableView
+	    	showPersonDetails(null);
+	    	personTable.getSelectionModel().selectedItemProperty().addListener(
+	                (observable, oldValue, newValue) -> showPersonDetails(newValue));
+	    }
+	    public void carregarLista() {
 	    	nomeTableView.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("nome"));
 	    	cpfTableView.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("cpf"));
+	    	personTable.setItems(data);
 	    }
 	    @FXML
 		private void handleNew(ActionEvent event) {
@@ -101,6 +112,28 @@ public class ControladorTabelaFuncionarios {
 	    	}catch(IOException e) {
 	    		e.printStackTrace();
 	    	}
-	    	
+	    }
+	    public void showPersonDetails(Funcionario func) {
+	        if (func != null) {
+	            // Preenche as labels com informações do objeto person.
+	        	if(func instanceof Gerente) {
+	        		funcaoGrid.setText("Gerente");
+	        	}else if(func instanceof Vendedor) {
+	        		funcaoGrid.setText("Vendedor");
+	        	}else {
+		        	funcaoGrid.setText("Veterinario");
+	        	}
+	        	nomeGrid.setText(func.getNome());
+	        	cpfGrid.setText(func.getCpf());
+	        	loginGrid.setText(func.getLogin());
+	        	senhaGrid.setText(func.getSenha());
+	        } else {
+	            // Person é null, remove todo o texto.
+	        	funcaoGrid.setText("");
+	            nomeGrid.setText("");
+	        	cpfGrid.setText("");
+	        	loginGrid.setText("");
+	        	senhaGrid.setText("");
+	        }
 	    }
 }

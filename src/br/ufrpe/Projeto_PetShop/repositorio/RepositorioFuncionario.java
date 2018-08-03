@@ -86,4 +86,8 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
             this.funcionarios = arrayDuplicado;
         }
     }
+	@Override
+	public Funcionario[] getFuncionarioArray() {
+		return funcionarios;
+	}
 }

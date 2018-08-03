@@ -71,4 +71,11 @@ public class ControladorDeFuncionarios {
 			throw new NaoEncontradoException("Funcionario");
 		}
 	}
+	/**
+	 * retorna todo o array de funcionarios do repositório.
+	 * @return Funcinario[]
+	 */
+	public Funcionario[] getFuncionarioArray() {
+		return instanceRepFuncionario.getFuncionarioArray();
+	}
 }

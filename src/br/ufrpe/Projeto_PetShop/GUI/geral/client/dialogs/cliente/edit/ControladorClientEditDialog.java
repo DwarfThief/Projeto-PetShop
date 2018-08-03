@@ -24,8 +24,12 @@ public class ControladorClientEditDialog {
 	private RadioButton outroRadioButton;
 	
 	private Stage dialogStage;
+	
+	public void setDialogStage(Stage dialogStage) {
+		this.dialogStage = dialogStage;
+	}
 	/**
-	 * 
+	 * Evento do RadioButton "Masculino"
 	 * @param event
 	 */
 	@FXML
@@ -35,6 +39,10 @@ public class ControladorClientEditDialog {
     	outroRadioButton.setSelected(false);
     	masculinoRadioButton.requestFocus();
     }
+	/**
+	 * Evento do RadioButton "Feminino"
+	 * @param event
+	 */
 	@FXML
     private void handleFemininoRadioButton(ActionEvent event) {
     	masculinoRadioButton.setSelected(false);
@@ -42,6 +50,10 @@ public class ControladorClientEditDialog {
     	outroRadioButton.setSelected(false);
     	femininoRadioButton.requestFocus();
     }
+	/**
+	 * Evento do RadioButton "Outro"
+	 * @param event
+	 */
 	@FXML
     private void handleOutroRadioButton(ActionEvent event) {
     	masculinoRadioButton.setSelected(false);
@@ -49,15 +61,20 @@ public class ControladorClientEditDialog {
     	outroRadioButton.setSelected(true);
     	outroRadioButton.requestFocus();
     }
+	/**
+	 * Cadastra o cliente novo no banco de dados.
+	 * @param event
+	 */
 	@FXML
 	private void handleOk(ActionEvent event) {
-		this.dialogStage.close();
+//		TODO implementar substituição no repositório
 	}
+	/**
+	 * Evento do botão "Cancel"
+	 * @param event
+	 */
 	@FXML
 	private void handleCancel(ActionEvent event) {
 		this.dialogStage.close();
-	}
-	public void setDialogStage(Stage dialogStage) {
-		this.dialogStage = dialogStage;
 	}
 }
