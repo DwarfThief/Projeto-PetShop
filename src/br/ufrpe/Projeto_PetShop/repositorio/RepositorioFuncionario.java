@@ -1,6 +1,7 @@
 package br.ufrpe.Projeto_PetShop.repositorio;
 
 import br.ufrpe.Projeto_PetShop.exceptions.FuncionarioJaExisteException;
+import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 
 public class RepositorioFuncionario implements IRepositorioFuncionario{
@@ -25,14 +26,20 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 		}
 		return null;
 	}
-	private int procurarPos(String cpf) {
+	/**
+	 * Retorna posicionamento no array do repositório.
+	 * @param cpf
+	 * @return int i com o posicionamento do Funcionário no Array.
+	 * @throws NaoEncontradoException é lançado quando o Funcionario não foi encontrado no Array.
+	 */
+	private int procurarPos(String cpf) throws NaoEncontradoException{
 		int i = 0;
         for(; i<this.funcionariosTam; i++) {
         	if(cpf.equals(this.funcionarios[i].getCpf())) {
         		return i;
         	}
         }
-        return funcionariosTam;
+        throw new NaoEncontradoException("Funcionario");
 	}
 	/**
 	 * Add o Funcionario no banco de Dados.
@@ -67,14 +74,14 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 		return null;
 	}
 	@Override
-	public void remover(String cpf) {
+	public void remover(String cpf) throws NaoEncontradoException {
 		int i = this.procurarPos(cpf);
 		if (i != this.funcionariosTam) {
             this.funcionarios[i] = this.funcionarios[this.funcionariosTam - 1];
             this.funcionarios[this.funcionariosTam - 1] = null;
             this.funcionariosTam = this.funcionariosTam - 1;
         } else {
-        	//TODO exception
+        	throw new NaoEncontradoException("Funcionario");
         }
 	}
 	private void duplicaArray() {
@@ -89,5 +96,13 @@ public class RepositorioFuncionario implements IRepositorioFuncionario{
 	@Override
 	public Funcionario[] getFuncionarioArray() {
 		return funcionarios;
+	}
+	@Override
+	public int getFuncionarioPos(String cpf) throws NaoEncontradoException {
+		return this.procurarPos(cpf);
+	}
+	@Override
+	public void setFuncionario(int i, Funcionario f) {
+		funcionarios[i] = f;
 	}
 }

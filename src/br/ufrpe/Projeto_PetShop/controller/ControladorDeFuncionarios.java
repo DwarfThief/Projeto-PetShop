@@ -50,8 +50,9 @@ public class ControladorDeFuncionarios {
 	 * Remove um funcionario do banco de dados de acordo com o seu CPF.
 	 * @param cpf
 	 * @throws CpfInvalidoException
+	 * @throws NaoEncontradoException 
 	 */
-	public void remover(String cpf) throws CpfInvalidoException{
+	public void remover(String cpf) throws CpfInvalidoException, NaoEncontradoException{
 		if(cpf != null) {
 			instanceRepFuncionario.remover(cpf);
 		}else {
@@ -77,5 +78,13 @@ public class ControladorDeFuncionarios {
 	 */
 	public Funcionario[] getFuncionarioArray() {
 		return instanceRepFuncionario.getFuncionarioArray();
+	}
+	public int getFuncionarioPos(String cpf) throws NaoEncontradoException {
+		return instanceRepFuncionario.getFuncionarioPos(cpf);
+	}
+	public void setFuncionario(int funcionarioPos, Funcionario f) {
+		if(funcionarioPos >= 0 && f!=null && f.getCpf() != null && f.getLogin() != null && f.getLogin() != null && f.getNome()!=null && f.getSenha() != null) {
+			instanceRepFuncionario.setFuncionario(funcionarioPos, f);
+		}
 	}
 }

@@ -1,12 +1,16 @@
 package br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios;
 
 import java.io.IOException;
-
+import java.net.URL;
+import java.util.Optional;
+import java.util.ResourceBundle;
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
 import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.create.FuncionarioCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit.FuncionarioEditDialogController;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
+import br.ufrpe.Projeto_PetShop.exceptions.CpfInvalidoException;
+import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Vendedor;
@@ -15,16 +19,21 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ControladorTabelaFuncionarios {
+public class ControladorTabelaFuncionarios implements Initializable {
 	 	@FXML
 	    private TableView<Funcionario> personTable;
 	 	private final ObservableList<Funcionario> data = FXCollections.observableArrayList(Fachada.getInstance().contFuncionarios().getFuncionarioArray());
@@ -44,33 +53,17 @@ public class ControladorTabelaFuncionarios {
 	    @FXML
 	    private Label senhaGrid;
 	    
-	    @FXML
-	    private void iniatilize() {
+	    @Override
+		public void initialize(URL arg0, ResourceBundle arg1) {
 	    	showPersonDetails(null);
-	    	personTable.getSelectionModel().selectedItemProperty().addListener(
-	                (observable, oldValue, newValue) -> showPersonDetails(newValue));
-	    }
-	    public void carregarLista() {
 	    	nomeTableView.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("nome"));
 	    	cpfTableView.setCellValueFactory(new PropertyValueFactory<Funcionario,String>("cpf"));
 	    	personTable.setItems(data);
-	    }
+	    	this.personTable.getSelectionModel().selectedItemProperty().addListener(
+	                (observable, oldValue, newValue) -> showPersonDetails(this.personTable.getSelectionModel().getSelectedItem()));
+		}
 	    @FXML
 		private void handleNew(ActionEvent event) {
-	    	abrirNewDialog();
-	    }
-	    @FXML
-		private void handleEdit(ActionEvent event) {
-	    	abrirEditDialog();
-	    }
-	    @FXML
-		private void handleDel(ActionEvent event) {
-	    	
-	    }
-	    /**
-	     * Abre o dialog para cadastrar um novo cliente
-	     */
-	    private void abrirNewDialog() {
 	    	try {
 	    		FXMLLoader loader = new FXMLLoader();
 		        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/create/funcionarioCreateDialog.fxml"));
@@ -90,28 +83,82 @@ public class ControladorTabelaFuncionarios {
 	    		e.printStackTrace();
 	    	}
 	    }
-	    private void abrirEditDialog() {
-	    	try {
-	    		FXMLLoader loader = new FXMLLoader();
-		        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/funcionarioEditDialog.fxml"));
-		        AnchorPane page = (AnchorPane)loader.load();
-		    	// Cria o palco dialogStage.
-		        Stage dialogStage = new Stage();
-		        dialogStage.setTitle("Edit Person");
-		        dialogStage.initModality(Modality.WINDOW_MODAL);
-		        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
-		        Scene scene = new Scene(page);
-		        dialogStage.setScene(scene);
+	    @FXML
+		private void handleEdit(ActionEvent event) {
+	    	if(personTable.getSelectionModel().getSelectedItem() != null) {
+	    		try {
+		    		FXMLLoader loader = new FXMLLoader();
+			        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/funcionarioEditDialog.fxml"));
+			        AnchorPane page = (AnchorPane)loader.load();
+			    	// Cria o palco dialogStage.
+			        Stage dialogStage = new Stage();
+			        dialogStage.setTitle("Edit Person");
+			        dialogStage.initModality(Modality.WINDOW_MODAL);
+			        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
+			        Scene scene = new Scene(page);
+			        dialogStage.setScene(scene);
+			        
+			        // Define a pessoa no controller.
+			        FuncionarioEditDialogController controller = loader.getController();
+			        controller.setDialogStage(dialogStage);
+			        controller.setPerson(personTable.getSelectionModel().getSelectedItem());
 
-		        // Define a pessoa no controller.
-		        FuncionarioEditDialogController controller = loader.getController();
-		        controller.setDialogStage(dialogStage);
+			        // Mostra a janela e espera até o usuário fechar.
+			        dialogStage.showAndWait();
+		    	}catch(IOException e) {
+		    		e.printStackTrace();
+		    	}
+	    	}else {
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Ops...");
+				alert.setHeaderText(null);
+				alert.setContentText("É necessário selecionar um funcionário.");
 
-		        // Mostra a janela e espera até o usuário fechar.
-		        dialogStage.showAndWait();
-	    	}catch(IOException e) {
-	    		e.printStackTrace();
+				alert.showAndWait();
 	    	}
+	    	
+	    }
+	    @FXML
+		private void handleDel(ActionEvent event) {
+	    	if(this.personTable.getSelectionModel().getSelectedItem()!=null) {
+	    		Alert alert = new Alert(AlertType.CONFIRMATION);
+		    	alert.setTitle("Confirmação de delete");
+		    	alert.setHeaderText("Deletar funcionario");
+		    	alert.setContentText("Você realmente quer deletar esse funcionário?");
+
+		    	Optional<ButtonType> result = alert.showAndWait();
+		    	if (result.get() == ButtonType.OK){
+		    		try {
+						Fachada.getInstance().contFuncionarios().remover(this.personTable.getSelectionModel().getSelectedItem().getCpf());
+					} catch (CpfInvalidoException e) {
+						Alert alertE = new Alert(AlertType.INFORMATION);
+						alertE.setTitle("Er...");
+						alertE.setHeaderText(null);
+						alertE.setContentText(e.getMessage());
+
+						alertE.showAndWait();
+					} catch (NaoEncontradoException e) {
+						Alert alertE = new Alert(AlertType.INFORMATION);
+						alertE.setTitle("Estranho...");
+						alertE.setHeaderText(null);
+						alertE.setContentText(e.getMessage());
+
+						alertE.showAndWait();
+					}finally {
+						alert.close();
+					}
+		    	} else {
+		    		alert.close();
+		    	}
+	    	}else {
+	    		Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Ops...");
+				alert.setHeaderText(null);
+				alert.setContentText("É necessário selecionar um funcionário.");
+
+				alert.showAndWait();
+	    	}
+	    	
 	    }
 	    public void showPersonDetails(Funcionario func) {
 	        if (func != null) {
@@ -136,4 +183,5 @@ public class ControladorTabelaFuncionarios {
 	        	senhaGrid.setText("");
 	        }
 	    }
+		
 }
