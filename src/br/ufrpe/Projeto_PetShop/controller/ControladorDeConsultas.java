@@ -56,4 +56,7 @@ public class ControladorDeConsultas {
 			throw new CadastroInvalidoException();
 		}
 	}
+	public Consulta[] getConsultasArray() {
+		return instanceRepConsulta.getConsultasArray();
+	}
 }

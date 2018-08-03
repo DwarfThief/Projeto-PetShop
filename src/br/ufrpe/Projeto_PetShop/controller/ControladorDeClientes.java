@@ -53,5 +53,11 @@ public class ControladorDeClientes {
 			throw new CadastroInvalidoException();
 		}
 	}
-	
+	/**
+	 * Retorna array de clientes.
+	 * @return
+	 */
+	public Cliente[] getClientesArray() {
+		return instanceRepCliente.getClienteArray();
+	}
 }

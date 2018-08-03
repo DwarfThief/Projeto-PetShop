@@ -114,4 +114,12 @@ public class RepositorioConsulta implements IRepositorioConsulta{
             this.consultas = arrayDuplicado;
         }
     }
+	/**
+	 * Retorna todo o array de consulta;
+	 * @return Consulta[] consultas
+	 */
+	@Override
+	public Consulta[] getConsultasArray() {
+		return consultas;
+	}
 }

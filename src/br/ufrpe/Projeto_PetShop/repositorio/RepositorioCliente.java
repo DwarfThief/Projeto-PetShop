@@ -91,4 +91,7 @@ public class RepositorioCliente implements IRepositorioCliente  {
             this.clientes = arrayDuplicado;
         }
     }
+	public Cliente[] getClienteArray() {
+		return clientes;
+	}
 }

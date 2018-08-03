@@ -4,7 +4,8 @@ import java.io.IOException;
 
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.ControladorTabelaFuncionarios;
-import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.create.FuncionarioCreateDialog;
+import br.ufrpe.Projeto_PetShop.GUI.geral.client.ControladorClienteScene;
+import br.ufrpe.Projeto_PetShop.GUI.geral.consulta.ControladorConsultaScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -97,6 +98,51 @@ public class ScreenManager {
 	        dialogStage.showAndWait();
     	}catch(IOException e) {
     		e.printStackTrace();
-    	}
+    	} 
+    }
+    /**
+     * Cria um dialog com as opções do cliente.
+     */
+    public void clienteCena() {
+    	try {
+    		FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/ClienteScene.fxml"));
+	        AnchorPane page = (AnchorPane)loader.load();
+	    	// Cria o palco dialogStage.
+	        Stage dialogStage = new Stage();
+	        ControladorClienteScene fooController = (ControladorClienteScene) loader.getController();
+	        fooController.carregarLista();
+	        fooController.showPersonDetails(null);
+	        dialogStage.setTitle("Cadastrar funcionário");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+	        // Mostra a janela e espera até o usuário fechar.
+	        dialogStage.showAndWait();
+    	}catch(IOException e) {
+    		e.printStackTrace();
+    	} 
+    }
+    public void consultaCena() {
+    	try {
+    		FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ConsultaScene.fxml"));
+	        AnchorPane page = (AnchorPane)loader.load();
+	    	// Cria o palco dialogStage.
+	        Stage dialogStage = new Stage();
+	        ControladorConsultaScene fooController = (ControladorConsultaScene) loader.getController();
+	        fooController.carregarLista();
+	        fooController.showPersonDetails(null);
+	        dialogStage.setTitle("Cadastrar funcionário");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+	        // Mostra a janela e espera até o usuário fechar.
+	        dialogStage.showAndWait();
+    	}catch(IOException e) {
+    		e.printStackTrace();
+    	} 
     }
 }

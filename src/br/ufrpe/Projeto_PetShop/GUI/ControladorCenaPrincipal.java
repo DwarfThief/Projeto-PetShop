@@ -4,12 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class ControladorCenaPrincipal {
+	/**
+	 * Evento para o botão "Cliente" no menu principal.
+	 * @param event
+	 */
 	@FXML
 	private void handleClientesButton(ActionEvent event) {
-		ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/geral/client/ClienteScene.fxml");
+		ScreenManager.getInstance().clienteCena();
 	}
 	@FXML
 	private void handleConsultasButton(ActionEvent event) {
-		//TODO
+		ScreenManager.getInstance().consultaCena();
 	}
 }

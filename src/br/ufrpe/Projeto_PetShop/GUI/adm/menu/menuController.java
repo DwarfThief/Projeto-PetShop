@@ -14,15 +14,14 @@ public class MenuController {
 	
 	@FXML
 	private void handleClientesButton(ActionEvent event) {
-		ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/geral/client/ClienteScene.fxml");
+		ScreenManager.getInstance().clienteCena();
 	}
 	@FXML
 	private void handleFuncionariosButton(ActionEvent event) {
-//		ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/tabelaFuncionarios.fxml");
 		ScreenManager.getInstance().funcionarioCena();
 	}
 	@FXML
 	private void handleConsultasButton(ActionEvent event) {
-		ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ConsultaScene.fxml");
+		ScreenManager.getInstance().consultaCena();
 	}
 }

@@ -7,8 +7,8 @@ public class Cliente {
 	private String cpf;
 	private char sexo;
 	
-	public Cliente(String nome, String endereco, String telefone,
-			String cpf, char sexo) {
+	public Cliente(String nome,String cpf , String telefone,
+			String endereco, char sexo) {
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;
@@ -56,4 +56,5 @@ public class Cliente {
 			+ "\nTelefone: "+ this.telefone + "\nEndereco: " + this.endereco;
 		return text;
 	}
+	
 }

@@ -24,4 +24,9 @@ public interface IRepositorioCliente {
 	 * @throws ClienteJaExisteException
 	 */
 	public void addCliente(Cliente cliente) throws ClienteJaExisteException;
+	/**
+	 * Retorna o array com todos os clientes do repositório.
+	 * @return Clientes[] cliente
+	 */
+	public Cliente[] getClienteArray();
 }

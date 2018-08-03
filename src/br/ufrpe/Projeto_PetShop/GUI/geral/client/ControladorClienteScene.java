@@ -7,7 +7,10 @@ import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit.FuncionarioEdi
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.create.ControladorAnimalCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.create.ControladorClientCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.edit.ControladorClientEditDialog;
+import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +20,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -25,6 +29,7 @@ import javafx.stage.Stage;
 public class ControladorClienteScene {
 	 	@FXML
 	    private TableView<Cliente> personTable;
+	 	private final ObservableList<Cliente> data = FXCollections.observableArrayList(Fachada.getInstance().contClientes().getClientesArray());
 	    @FXML
 	    private TableColumn<Cliente, String> nomeTableView;
 	    @FXML
@@ -39,9 +44,8 @@ public class ControladorClienteScene {
 	    
 	    @FXML
 	    private void iniatilize() {
-	    	//TODO implementar a lista no TableView
-	    	//nomeTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
-	    	//cpfTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("cpf"));
+	    	personTable.getSelectionModel().selectedItemProperty().addListener(
+	                (observable, oldValue, newValue) -> showPersonDetails(newValue));
 	    }
 	    /**
 	     * Evento para o botão "Cadastrar cliente"
@@ -204,4 +208,24 @@ public class ControladorClienteScene {
 
 			alert.showAndWait();
 	    }
+		/**
+		 * Como diz o nome, ele carrega a lista com as informações no Repositório.
+		 */
+	    public void carregarLista() {
+			nomeTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
+	    	cpfTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("cpf"));
+	    	personTable.setItems(data);
+		}
+		public void showPersonDetails(Cliente cliente) {
+			if (cliente != null) {
+	            // Preenche as labels com informações do objeto person.
+	        	nomeGrid.setText(cliente.getNome());
+	        	cpfGrid.setText(cliente.getCpf());
+	        } else {
+	            // Person é null, remove todo o texto.
+	            nomeGrid.setText("");
+	        	cpfGrid.setText("");
+	        }
+			
+		}
 }
