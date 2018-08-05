@@ -1,4 +1,4 @@
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><a>![GPL-3.0](https://www.gnu.org/graphics/gplv3-127x51.png)</a>
 
 # Projeto-PetShop
 É um sistema de cadastro para um Pet Shop. O projeto foi parte da cadeira de Introdução a Programação, 2018.1 da [UFRPE](http://www.ufrpe.br/).
