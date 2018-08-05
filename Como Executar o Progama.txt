@@ -1,0 +1,11 @@
+-> Execute o Teste.java
+-> Logins:
+	-> Acessar como Vendedor
+		-> Login: V
+		-> Senha: s
+	-> Acessar como Veterinario
+		-> Login: vet
+		-> Senha: s
+	-> Acessar como Gerente
+		-> Login: G
+		-> Senha: s
