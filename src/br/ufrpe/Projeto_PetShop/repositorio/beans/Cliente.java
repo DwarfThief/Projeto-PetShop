@@ -47,7 +47,7 @@ public class Cliente {
 	}
 	public boolean equals(Object o) {
 		Cliente outro = (Cliente) o;
-		return this.nome.equals(outro.getNome()) && this.cpf.equals(outro.getCpf())
+		return outro !=null && this.nome.equals(outro.getNome()) && this.cpf.equals(outro.getCpf())
 				&& this.endereco.equals(outro.getEndereco()) && this.sexo == outro.getSexo()
 				&& this.telefone.equals(outro.getTelefone());
 	}

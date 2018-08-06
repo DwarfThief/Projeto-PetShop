@@ -66,27 +66,27 @@
             </TextField>
          </children>
       </GridPane>
-      <RadioButton fx:id="gerenteRadioButton" layoutX="27.0" layoutY="179.0" mnemonicParsing="false" text="Gerente">
+      <RadioButton fx:id="gerenteRadioButton" layoutX="27.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleGerente" text="Gerente">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="vendedorRadioButton" layoutX="27.0" layoutY="204.0" mnemonicParsing="false" text="Vendedor">
+      <RadioButton fx:id="vendedorRadioButton" layoutX="27.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleVendedor" text="Vendedor">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="veterinarioRadioButton" layoutX="27.0" layoutY="229.0" mnemonicParsing="false" text="Veterinario">
+      <RadioButton fx:id="veterinarioRadioButton" layoutX="27.0" layoutY="229.0" mnemonicParsing="false" onAction="#handleVeterinario" text="Veterinario">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </RadioButton>
-      <Button layoutX="177.0" layoutY="226.0" mnemonicParsing="false" text="OK">
+      <Button layoutX="177.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleOk" text="OK">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="219.0" layoutY="226.0" mnemonicParsing="false" text="Cancelar">
+      <Button layoutX="219.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancelar">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font>

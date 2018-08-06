@@ -49,7 +49,7 @@ public class ScreenManager {
     }
     /**
      * Muda o Stage
-     * @param mainStage
+     * @param  mainStage
      */
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
@@ -82,10 +82,9 @@ public class ScreenManager {
     	try {
     		FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/tabelaFuncionarios.fxml"));
-	        AnchorPane page = (AnchorPane)loader.load();
+	        AnchorPane page = loader.load();
 	    	// Cria o palco dialogStage.
 	        Stage dialogStage = new Stage();
-	        ControladorTabelaFuncionarios fooController = (ControladorTabelaFuncionarios) loader.getController();
 	        dialogStage.setTitle("Cadastrar funcionário");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
@@ -104,12 +103,10 @@ public class ScreenManager {
     	try {
     		FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/ClienteScene.fxml"));
-	        AnchorPane page = (AnchorPane)loader.load();
+	        AnchorPane page = loader.load();
 	    	// Cria o palco dialogStage.
 	        Stage dialogStage = new Stage();
-	        ControladorClienteScene fooController = (ControladorClienteScene) loader.getController();
-	        fooController.showPersonDetails(null);
-	        dialogStage.setTitle("Cadastrar funcionário");
+	        dialogStage.setTitle("Cadastrar cliente");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 	        Scene scene = new Scene(page);
@@ -124,13 +121,10 @@ public class ScreenManager {
     	try {
     		FXMLLoader loader = new FXMLLoader();
 	        loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ConsultaScene.fxml"));
-	        AnchorPane page = (AnchorPane)loader.load();
+	        AnchorPane page = loader.load();
 	    	// Cria o palco dialogStage.
 	        Stage dialogStage = new Stage();
-	        ControladorConsultaScene fooController = (ControladorConsultaScene) loader.getController();
-	        fooController.carregarLista();
-	        fooController.showPersonDetails(null);
-	        dialogStage.setTitle("Cadastrar funcionário");
+	        dialogStage.setTitle("Cadastrar consulta");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 	        Scene scene = new Scene(page);

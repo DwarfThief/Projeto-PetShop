@@ -78,17 +78,17 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Button disable="true" layoutX="247.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleNewConsulta" prefHeight="23.0" prefWidth="154.0" text="Criar nova consulta">
+                  <Button layoutX="247.0" layoutY="326.0" mnemonicParsing="false" onAction="#handleNewConsulta" prefHeight="23.0" prefWidth="154.0" text="Criar nova consulta">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button disable="true" layoutX="272.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleDelConsulta" prefHeight="26.0" prefWidth="129.0" text="Deletar consulta">
+                  <Button layoutX="272.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleDelConsulta" prefHeight="26.0" prefWidth="129.0" text="Deletar consulta">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button disable="true" layoutX="148.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleEditConsulta" text="Editar consulta">
+                  <Button layoutX="148.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleEditConsulta" text="Editar consulta">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>

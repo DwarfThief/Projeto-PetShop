@@ -73,17 +73,17 @@
             </Label>
             <Group GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <RadioButton fx:id="masculinoRadioButton" layoutY="17.0" mnemonicParsing="false" onAction="#handleVendedor" text="Masculino">
+                  <RadioButton fx:id="masculinoRadioButton" layoutY="17.0" mnemonicParsing="false" onAction="#handleMasculinoRadioButton" text="Masculino">
                      <font>
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="femininoRadioButton" mnemonicParsing="false" onAction="#handleVeterinario" text="Feminino">
+                  <RadioButton fx:id="femininoRadioButton" mnemonicParsing="false" onAction="#handleFemininoRadioButton" text="Feminino">
                      <font>
                         <Font name="Arial Bold" size="12.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="outroRadioButton" layoutY="35.0" mnemonicParsing="false" onAction="#handleVeterinario" text="Outro">
+                  <RadioButton fx:id="outroRadioButton" layoutY="35.0" mnemonicParsing="false" onAction="#handleOutroRadioButton" text="Outro">
                      <font>
                         <Font name="Arial Bold" size="12.0" />
                      </font>

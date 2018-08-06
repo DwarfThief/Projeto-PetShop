@@ -67,7 +67,7 @@
                               <Font name="Arial Bold" size="15.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="animaisComboBox" prefHeight="25.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="animaisComboBox" prefHeight="25.0" prefWidth="199.0" promptText="Selecione o animal" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Animais" GridPane.rowIndex="2">
                            <font>
                               <Font name="Arial Bold" size="15.0" />
