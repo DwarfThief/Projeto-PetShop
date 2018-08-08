@@ -1,8 +1,8 @@
-package br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit;
+package br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs;
 
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.CadastroInvalidoException;
-import br.ufrpe.Projeto_PetShop.exceptions.CpfInvalidoException;
+import br.ufrpe.Projeto_PetShop.exceptions.FuncionarioJaExisteException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Gerente;
@@ -22,7 +22,7 @@ import javafx.scene.control.RadioButton;
  * 
  * @author Marco Jakob
  */
-public class FuncionarioEditDialogController {
+public class FuncionarioDialogController {
 
     @FXML
     private TextField nomeTextField;
@@ -32,14 +32,14 @@ public class FuncionarioEditDialogController {
     private TextField loginTextField;
     @FXML
     private TextField senhaTextField;
-    
     @FXML
     private RadioButton gerenteRadioButton;
     @FXML
     private RadioButton vendedorRadioButton;
     @FXML
     private RadioButton veterinarioRadioButton;
-    private Funcionario person;
+
+    private Funcionario funcionario;
     private Stage dialogStage;
     private boolean okClicked = false;
 
@@ -62,17 +62,17 @@ public class FuncionarioEditDialogController {
     /**
      * Define a pessoa a ser editada no dialog.
      * 
-     * @param person
+     * @param funcionario
 	*/
-    public void setPerson(Funcionario person) {
-    	this.person = person;
-        nomeTextField.setText(person.getNome());
-        cpfTextField.setText(person.getCpf());
-        loginTextField.setText(person.getLogin());
-        senhaTextField.setText(person.getSenha());
-        if(person instanceof Gerente) {
+    public void setPerson(Funcionario funcionario) {
+    	this.funcionario = funcionario;
+        nomeTextField.setText(funcionario.getNome());
+        cpfTextField.setText(funcionario.getCpf());
+        loginTextField.setText(funcionario.getLogin());
+        senhaTextField.setText(funcionario.getSenha());
+        if(funcionario instanceof Gerente) {
         	gerenteRadioButton.setSelected(true);
-        }else if(person instanceof Vendedor) {
+        }else if(funcionario instanceof Vendedor) {
         	vendedorRadioButton.setSelected(true);
         }else {
         	veterinarioRadioButton.setSelected(true);
@@ -90,55 +90,55 @@ public class FuncionarioEditDialogController {
     }
 
     /**
-     * Chamado quando o usuário clica OK.
+     * Ao clicar "Ok" chama este evento. Cria um Funcionario caso este Dialog for chamado pelo botão "Criar..." e edita
+	 * um Funcionario caso este Dialog for chamado pelo botão "Editar...".
      */
     @FXML
     private void handleOk() {
-    	
     	if(nomeTextField.getText()!="" && cpfTextField.getText()!="" && loginTextField.getText()!="" && 
     			senhaTextField.getText()!="" && (gerenteRadioButton.isSelected() == true || veterinarioRadioButton.isSelected() == true || vendedorRadioButton.isSelected() == true)) {
-    		try {
-    			if(Fachada.getInstance().contFuncionarios().getFuncionario(cpfTextField.getText()) != null) {
-    				Funcionario novoPerson;
-    				if(gerenteRadioButton.isSelected() == true) {
-            			novoPerson = new Gerente(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
-            		}else if(vendedorRadioButton.isSelected() == true) {
-            			novoPerson = new Vendedor(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
-            		}else{
-            			novoPerson = new Veterinario(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
-            		}
-    				try {
-						Fachada.getInstance().contFuncionarios().setFuncionario(Fachada.getInstance().contFuncionarios().getFuncionarioPos(person.getCpf()), novoPerson);
-					} catch (NaoEncontradoException e) {
-						Alert alert = new Alert(AlertType.INFORMATION);
-		    			alert.setTitle("Er...");
-		    			alert.setHeaderText(null);
-		    			alert.setContentText("Aconteceu algum imprevisto.");
-
-		    			alert.showAndWait();
-					}finally {
-						dialogStage.close();
-					}
-    			}
-    		} catch (CadastroInvalidoException | CpfInvalidoException e) {
-    			Alert alert = new Alert(AlertType.INFORMATION);
-    			alert.setTitle("Opa...");
-    			alert.setHeaderText(null);
-    			alert.setContentText("Funcionario ja existe.");
-
-    			alert.showAndWait();
-    		}
-    		
-    	}else {
-    		Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle(">:(");
-			alert.setHeaderText(null);
-			alert.setContentText("Preencha corretamente!");
-
-			alert.showAndWait();
+    		//Cria um Funcionario que sera usado para armazenar o novoFuncionario temporariamente.
+    		Funcionario novoFuncionario;
+    		if(this.gerenteRadioButton.isSelected()==true){
+    			novoFuncionario = new Gerente(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
+			}else if(this.vendedorRadioButton.isSelected() == true){
+				novoFuncionario = new Vendedor(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
+			}else{
+				novoFuncionario = new Veterinario(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
+			}
+			try{
+				if(this.funcionario !=null){
+					//Para editar um Funcionário já criado.
+					Fachada.getInstance().contFuncionarios().setFuncionario(
+							Fachada.getInstance().contFuncionarios().getFuncionarioPos(funcionario.getCpf()), novoFuncionario);
+				}else {
+					//Para criar um Funcionário novo.
+					Fachada.getInstance().contFuncionarios().addFuncionario(novoFuncionario);
+				}
+				dialogStage.close();
+			} catch (CadastroInvalidoException e) {
+				e.printStackTrace();
+			} catch (FuncionarioJaExisteException e) {
+				e.printStackTrace();
+			} catch (NaoEncontradoException e) {
+				e.printStackTrace();
+			}
+		}else {
+    		this.alertCadastroInvalido();
     	}
     }
- 
+
+	/**
+	 * Cria um alert avisando que o usuário não preencheu os campos corretamente.
+	 */
+	private void alertCadastroInvalido(){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(">:(");
+		alert.setHeaderText(null);
+		alert.setContentText("Preencha corretamente!");
+
+		alert.showAndWait();
+	}
 	@FXML
 	private void handleGerente(ActionEvent event) {
 		gerenteRadioButton.setSelected(true);

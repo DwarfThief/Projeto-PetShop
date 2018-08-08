@@ -6,8 +6,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
-import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.create.FuncionarioCreateDialog;
-import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.edit.FuncionarioEditDialogController;
+import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs.FuncionarioDialogController;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.CpfInvalidoException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
@@ -23,7 +22,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
@@ -34,14 +32,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ControladorTabelaFuncionarios implements Initializable {
+	private final ObservableList<Funcionario> data = FXCollections.observableArrayList(Fachada.getInstance().contFuncionarios().getFuncionarioArray());
+
 	@FXML
 	private TableView<Funcionario> personTable;
-	private final ObservableList<Funcionario> data = FXCollections.observableArrayList(Fachada.getInstance().contFuncionarios().getFuncionarioArray());
 	@FXML
 	private TableColumn<Funcionario, String> nomeTableView;
 	@FXML
 	private TableColumn<Funcionario, String> cpfTableView;
-
 	@FXML
 	private Label funcaoGrid;
 	@FXML
@@ -67,16 +65,21 @@ public class ControladorTabelaFuncionarios implements Initializable {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/create/funcionarioCreateDialog.fxml"));
-			AnchorPane page = (AnchorPane)loader.load();
+			AnchorPane page = loader.load();
+
 			// Cria o palco dialogStage.
 			Stage dialogStage = new Stage();
-			FuncionarioCreateDialog fooController = (FuncionarioCreateDialog) loader.getController();
-			fooController.setDialogStage(dialogStage);
 			dialogStage.setTitle("Cadastrar funcionário");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
+
+			//Define a pessoa no controller, assim sera possível o carregamento no dialog.
+			FuncionarioDialogController fooController = loader.getController();
+			fooController.setDialogStage(dialogStage);
+			fooController.setPerson(null);
+
 			// Mostra a janela e espera até o usuário fechar.
 			dialogStage.showAndWait();
 		}catch(IOException e) {
@@ -90,16 +93,17 @@ public class ControladorTabelaFuncionarios implements Initializable {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/funcionarioEditDialog.fxml"));
 				AnchorPane page = loader.load();
+
 				// Cria o palco dialogStage.
 				Stage dialogStage = new Stage();
-				dialogStage.setTitle("Edit Person");
+				dialogStage.setTitle("Edit funcionário");
 				dialogStage.initModality(Modality.WINDOW_MODAL);
 				dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 				Scene scene = new Scene(page);
 				dialogStage.setScene(scene);
 
 				// Define a pessoa no controller, assim sera possível o carregamento no dialog.
-				FuncionarioEditDialogController controller = loader.getController();
+				FuncionarioDialogController controller = loader.getController();
 				controller.setDialogStage(dialogStage);
 				controller.setPerson(personTable.getSelectionModel().getSelectedItem());
 
@@ -109,14 +113,8 @@ public class ControladorTabelaFuncionarios implements Initializable {
 				e.printStackTrace();
 			}
 		}else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Ops...");
-			alert.setHeaderText(null);
-			alert.setContentText("É necessário selecionar um funcionário.");
-
-			alert.showAndWait();
+			this.alertFuncionarioNaoSelecionado();
 		}
-
 	}
 	@FXML
 	private void handleDel(ActionEvent event) {
@@ -151,16 +149,27 @@ public class ControladorTabelaFuncionarios implements Initializable {
 				alert.close();
 			}
 		}else {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Ops...");
-			alert.setHeaderText(null);
-			alert.setContentText("É necessário selecionar um funcionário.");
-
-			alert.showAndWait();
+			this.alertFuncionarioNaoSelecionado();
 		}
-
 	}
-	public void showPersonDetails(Funcionario func) {
+
+	/**
+	 * Mostra uma alerta indicando que o usuário deve selecionar um funcionário.
+	 */
+	private  void alertFuncionarioNaoSelecionado(){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Ops...");
+		alert.setHeaderText(null);
+		alert.setContentText("É necessário selecionar um funcionário.");
+
+		alert.showAndWait();
+	}
+
+	/**
+	 * Recebe o Funcionario selecionado para atualizar no grid e mostrar os dados do Funcionario selecionado.
+	 * @param func, recebe um Funcionario para pegar os dados e mostrar no grid.
+	 */
+	private void showPersonDetails(Funcionario func) {
 		if (func != null) {
 			// Preenche as labels com informações do objeto person.
 			if(func instanceof Gerente) {
@@ -183,5 +192,4 @@ public class ControladorTabelaFuncionarios implements Initializable {
 			senhaGrid.setText("");
 		}
 	}
-
 }

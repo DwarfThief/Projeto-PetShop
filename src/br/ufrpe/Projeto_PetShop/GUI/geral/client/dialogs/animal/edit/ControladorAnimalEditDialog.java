@@ -14,13 +14,14 @@ public class ControladorAnimalEditDialog {
 	private TextField nomeTextField;
 	@FXML
 	private TextField racaTextField;
-	private Stage dialogStage;
+    @FXML
+    private RadioButton machoRadioButton;
+    @FXML
+    private RadioButton femeaRadioButton;
+
+    private Stage dialogStage;
 	private Animal person;
 
-	@FXML
-	private RadioButton machoRadioButton;
-	@FXML
-	private RadioButton femeaRadioButton;
 	/**
 	 * Recebe o stage, serve para o botão "Ok" e "Cancel" fecharem o Dialog ao clicar.
 	 * @param dialogStage

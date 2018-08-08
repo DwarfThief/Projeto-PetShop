@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dd62f8b-97ca-4046-b098-ec15f5f9783b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/ScreenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/ScreenManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/ControladorTabelaFuncionarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/ControladorTabelaFuncionarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/FuncionarioEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/FuncionarioEditDialogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/funcionarioEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/funcionarioEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/ClienteScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/ClienteScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/ControladorClienteScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/ControladorClienteScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/AnimalDialog.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/AnimalEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/AnimalEditDialog.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/create/FuncionarioCreateDialog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/create/funcionarioCreateDialog.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/FuncionarioEditDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/FuncionarioDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/funcionarioEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/FuncionarioDialog.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/ControladorAnimalEditDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/ControladorAnimalEditDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/cliente/edit/ClientEditDialog.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/cliente/edit/ClientEditDialog.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ConsultaScene.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ConsultaScene.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ControladorConsultaScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ControladorConsultaScene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/repositorio/beans/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/repositorio/beans/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/repositorio/beans/Consulta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/repositorio/beans/Consulta.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,78 +22,59 @@
     <session id="1188702559">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.109" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.88" value="1" />
           <entry key="project.open.time.95" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="fxml" value="4" />
-          <entry key="java" value="18" />
+          <entry key="fxml" value="6" />
+          <entry key="java" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="18" />
-          <entry key="XML" value="4" />
+          <entry key="JAVA" value="21" />
+          <entry key="XML" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="fxml" value="54" />
-          <entry key="java" value="1010" />
+          <entry key="fxml" value="55" />
+          <entry key="java" value="2594" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1010" />
-          <entry key="XML" value="54" />
+          <entry key="JAVA" value="2594" />
+          <entry key="XML" value="55" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/ControladorClienteScene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#handleNewClient#0;class#ControladorClienteScene#0" />
-                <element signature="method#handleEditClient#0;class#ControladorClienteScene#0" />
-                <element signature="method#handleNewAnimal#0;class#ControladorClienteScene#0" />
-                <element signature="method#handleDelAnimal#0;class#ControladorClienteScene#0" />
-                <element signature="method#alertaClienteNaoSelecionado#0;class#ControladorClienteScene#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/FuncionarioEditDialogController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="146" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/ControladorAnimalEditDialog.java">
+        <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/FuncionarioDialogController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-              <folding>
-                <element signature="e#612#613#0" expanded="true" />
-                <element signature="e#643#644#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="816">
+              <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/ControladorTabelaFuncionarios.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1690">
+              <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -117,9 +91,13 @@
         <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/ScreenManager.java" />
         <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/ControladorConsultaScene.java" />
         <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/AnimalEditDialog.fxml" />
-        <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/ControladorTabelaFuncionarios.java" />
         <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/ControladorClienteScene.java" />
         <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/ControladorAnimalEditDialog.java" />
+        <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/FuncionarioEditDialogController.java" />
+        <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/FuncionarioEditDialogController.java" />
+        <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/funcionarioEditDialog.fxml" />
+        <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/ControladorTabelaFuncionarios.java" />
+        <option value="$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/FuncionarioDialogController.java" />
       </list>
     </option>
   </component>
@@ -135,7 +113,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="72" />
     <option name="y" value="20" />
     <option name="width" value="1284" />
@@ -146,6 +124,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -185,7 +164,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Projeto_PetShop" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="geral" type="462c0819:PsiDirectoryNode" />
+              <item name="adm" type="462c0819:PsiDirectoryNode" />
+              <item name="funcionarios" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Projeto-PetShop" type="b2602c69:ProjectViewProjectNode" />
@@ -193,41 +173,9 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Projeto_PetShop" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="geral" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projeto-PetShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projeto-PetShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Projeto_PetShop" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="geral" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="adm" type="462c0819:PsiDirectoryNode" />
+              <item name="funcionarios" type="462c0819:PsiDirectoryNode" />
               <item name="dialogs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projeto-PetShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projeto-PetShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Projeto_PetShop" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="geral" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
-              <item name="animal" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Projeto-PetShop" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Projeto-PetShop" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Projeto_PetShop" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="geral" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="dialogs" type="462c0819:PsiDirectoryNode" />
-              <item name="animal" type="462c0819:PsiDirectoryNode" />
-              <item name="edit" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Projeto-PetShop" type="b2602c69:ProjectViewProjectNode" />
@@ -239,15 +187,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533587239989" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533689472004" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../AwesomeBot" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -310,17 +257,19 @@
       <workItem from="1533565899787" duration="1234000" />
       <workItem from="1533568860325" duration="1199000" />
       <workItem from="1533584647275" duration="2545000" />
+      <workItem from="1533684275227" duration="378000" />
+      <workItem from="1533684671728" duration="4791000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15940000" />
+    <option name="totallyTimeSpent" value="21109000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24761905" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25555557" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -328,7 +277,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32923076" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3276923" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -365,8 +314,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/RootLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/beans/value/ChangeListener.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -389,7 +338,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/menu/MenuController.java">
+    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/menu/menuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
@@ -419,16 +368,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/ControladorTabelaFuncionarios.java">
+    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/AnimalEditDialog.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="94" column="52" selection-start-line="94" selection-start-column="52" selection-end-line="94" selection-end-column="52" />
+        <state relative-caret-position="17">
+          <caret line="18" column="100" lean-forward="true" selection-start-line="18" selection-start-column="100" selection-end-line="18" selection-end-column="100" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/ControladorClienteScene.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="1802">
           <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -441,29 +391,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/AnimalEditDialog.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/ControladorAnimalEditDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="18" column="100" lean-forward="true" selection-start-line="18" selection-start-column="100" selection-end-line="18" selection-end-column="100" />
+        <state relative-caret-position="-78">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/edit/FuncionarioEditDialogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="146" selection-end-column="42" />
+        <state relative-caret-position="1496">
+          <caret line="120" column="22" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
+          <folding>
+            <element signature="method#setPerson#0;class#FuncionarioEditDialogController#0" />
+            <element signature="e#5111#5112#0" expanded="true" />
+            <element signature="e#5140#5141#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/edit/ControladorAnimalEditDialog.java">
+    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/funcionarioEditDialog.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-          <folding>
-            <element signature="e#612#613#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="204">
+          <caret line="12" column="194" selection-start-line="12" selection-start-column="194" selection-end-line="12" selection-end-column="194" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/FuncionarioDialog.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/ControladorTabelaFuncionarios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1690">
+          <caret line="67" column="30" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/br/ufrpe/Projeto_PetShop/GUI/adm/funcionarios/dialogs/FuncionarioDialogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
         </state>
       </provider>
     </entry>
