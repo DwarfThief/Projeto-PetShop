@@ -3,13 +3,11 @@ package br.ufrpe.Projeto_PetShop.GUI.geral.client;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.edit.ControladorAnimalEditDialog;
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.create.ControladorAnimalCreateDialog;
-import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.create.ControladorClientCreateDialog;
-import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.edit.ControladorClientEditDialog;
+import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.ControladorClientDialog;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 import javafx.collections.FXCollections;
@@ -64,17 +62,21 @@ public class ControladorClienteScene implements Initializable{
 	private void handleNewClient(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/cliente/create/ClientCreateDialog.fxml"));
+			loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/cliente/ClientCreateDialog.fxml"));
 			AnchorPane page = (AnchorPane)loader.load();
 			// Cria o palco dialogStage.
 			Stage dialogStage = new Stage();
-			ControladorClientCreateDialog fooController = (ControladorClientCreateDialog) loader.getController();
-			fooController.setDialogStage(dialogStage);
 			dialogStage.setTitle("Cadastrar cliente");
 			dialogStage.initModality(Modality.WINDOW_MODAL);
 			dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
+
+			//Envia o cliente selecionado para o dialog.
+			ControladorClientDialog fooController = loader.getController();
+			fooController.setDialogStage(dialogStage);
+			fooController.setCliente(null);
+
 			// Mostra a janela e espera até o usuário fechar.
 			dialogStage.showAndWait();
 		}catch(IOException e) {
@@ -90,12 +92,11 @@ public class ControladorClienteScene implements Initializable{
 		if(personTable.getSelectionModel().selectedItemProperty()!=null) {
 			try {
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/cliente/edit/ClientEditDialog.fxml"));
-				AnchorPane page = (AnchorPane)loader.load();
+				loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/cliente/ClientEditDialog.fxml"));
+				AnchorPane page = loader.load();
+
 				// Cria o palco dialogStage.
 				Stage dialogStage = new Stage();
-				ControladorClientEditDialog fooController = (ControladorClientEditDialog) loader.getController();
-				fooController.setDialogStage(dialogStage);
 				dialogStage.setTitle("Editar cliente");
 				dialogStage.initModality(Modality.WINDOW_MODAL);
 				dialogStage.initOwner(ScreenManager.getInstance().getMainStage());
@@ -103,8 +104,9 @@ public class ControladorClienteScene implements Initializable{
 				dialogStage.setScene(scene);
 
 				// Define a pessoa no controller.
-				ControladorClientEditDialog controller = loader.getController();
+				ControladorClientDialog controller = loader.getController();
 				controller.setDialogStage(dialogStage);
+				controller.setCliente(this.personTable.getSelectionModel().getSelectedItem());
 
 				// Mostra a janela e espera até o usuário fechar.
 				dialogStage.showAndWait();
@@ -176,23 +178,15 @@ public class ControladorClienteScene implements Initializable{
 				// Define a pessoa no controller, assim sera possível o carregamento no dialog.
 				ControladorAnimalEditDialog controller = loader.getController();
 				controller.setDialogStage(dialogStage);
-				controller.setPerson(personTable.getSelectionModel().getSelectedItem());
-
+				controller.setPerson(Fachada.getInstance().contAnimais().getAnimal(personTable.getSelectionModel().getSelectedItem().getCpf(), "X"));
+				//TODO por o nome do animal selecionado do ComboBox no setAnimal
 				// Mostra a janela e espera até o usuário fechar.
 				dialogStage.showAndWait();
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
 		}else {
-			/*
-			 * Alerta para indicar que não existe animal selecionado
-			 */
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Animal não selecionado");
-			alert.setHeaderText(null);
-			alert.setContentText("É necessário selecionar um animal.");
-
-			alert.showAndWait();
+			this.alertAnimalNaoSelecionado();
 		}
 	}
 	/**
@@ -201,15 +195,19 @@ public class ControladorClienteScene implements Initializable{
 	 */
 	@FXML
 	private void handleDelAnimal(ActionEvent event) {
-		/*
-		 * Alerta para indicar que não existe animal selecionado
-		 */
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Animal não selecionado");
-		alert.setHeaderText(null);
-		alert.setContentText("É necessário selecionar um animal.");
+		this.alertAnimalNaoSelecionado();
+	}
+	/**
+	 * Cria um alerta para indicar que não existe animal selecionado.
+	 */
+	private void alertAnimalNaoSelecionado(){
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Animal não selecionado");
+			alert.setHeaderText(null);
+			alert.setContentText("É necessário selecionar um animal.");
 
-		alert.showAndWait();
+			alert.showAndWait();
+		}
 	}
 	/**
 	 * Emite um alert quando o cliente n foi selecionado.

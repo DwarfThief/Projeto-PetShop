@@ -96,12 +96,12 @@ public class FuncionarioDialogController {
     @FXML
     private void handleOk() {
     	if(nomeTextField.getText()!="" && cpfTextField.getText()!="" && loginTextField.getText()!="" && 
-    			senhaTextField.getText()!="" && (gerenteRadioButton.isSelected() == true || veterinarioRadioButton.isSelected() == true || vendedorRadioButton.isSelected() == true)) {
+    			senhaTextField.getText()!="" && (gerenteRadioButton.isSelected() || veterinarioRadioButton.isSelected() || vendedorRadioButton.isSelected())) {
     		//Cria um Funcionario que sera usado para armazenar o novoFuncionario temporariamente.
     		Funcionario novoFuncionario;
-    		if(this.gerenteRadioButton.isSelected()==true){
+    		if(this.gerenteRadioButton.isSelected()){
     			novoFuncionario = new Gerente(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
-			}else if(this.vendedorRadioButton.isSelected() == true){
+			}else if(this.vendedorRadioButton.isSelected()){
 				novoFuncionario = new Vendedor(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
 			}else{
 				novoFuncionario = new Veterinario(nomeTextField.getText(), cpfTextField.getText(), loginTextField.getText(), senhaTextField.getText());
@@ -116,18 +116,23 @@ public class FuncionarioDialogController {
 					Fachada.getInstance().contFuncionarios().addFuncionario(novoFuncionario);
 				}
 				dialogStage.close();
-			} catch (CadastroInvalidoException e) {
+			} catch (CadastroInvalidoException | NaoEncontradoException e) {
 				e.printStackTrace();
 			} catch (FuncionarioJaExisteException e) {
-				e.printStackTrace();
-			} catch (NaoEncontradoException e) {
-				e.printStackTrace();
+				this.alertFuncionarioJaExiste();
 			}
 		}else {
     		this.alertCadastroInvalido();
     	}
     }
+	private void alertFuncionarioJaExiste(){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(":'(");
+		alert.setHeaderText(null);
+		alert.setContentText("O cpf já foi cadastrado em outro funcionário.");
 
+		alert.showAndWait();
+	}
 	/**
 	 * Cria um alert avisando que o usuário não preencheu os campos corretamente.
 	 */
@@ -135,7 +140,7 @@ public class FuncionarioDialogController {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle(">:(");
 		alert.setHeaderText(null);
-		alert.setContentText("Preencha corretamente!");
+		alert.setContentText("Preencha corretamente o formulário!");
 
 		alert.showAndWait();
 	}

@@ -36,14 +36,13 @@ public class RepositorioCliente implements IRepositorioCliente  {
 	 * @param cpf
 	 * @return i
 	 */
-	private int procurarPos(String cpf) {
-		int i = 0;
-        for(; i<this.clientesTam; i++) {
+	private int procurarPos(String cpf)throws NaoEncontradoException {
+        for(int i = 0; i<this.clientesTam; i++) {
         	if(cpf.equals(this.clientes[i].getCpf())) {
         		return i;
         	}
         }
-        return i;
+        throw new NaoEncontradoException("Cliente");
 	}
 	@Override
 	public void addCliente(Cliente cliente) throws ClienteJaExisteException {
@@ -93,5 +92,15 @@ public class RepositorioCliente implements IRepositorioCliente  {
     }
 	public Cliente[] getClienteArray() {
 		return clientes;
+	}
+
+	@Override
+	public int getClientePos(String cpf) throws NaoEncontradoException{
+		return this.procurarPos(cpf);
+	}
+
+	@Override
+	public void setCliente(int pos, Cliente cliente) {
+		this.clientes[pos] = cliente;
 	}
 }

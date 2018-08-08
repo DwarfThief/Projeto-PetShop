@@ -29,4 +29,17 @@ public interface IRepositorioCliente {
 	 * @return Clientes[] cliente
 	 */
 	public Cliente[] getClienteArray();
+	/**
+	 * Retorna a localização do cliente de acordo com o array que ele esta localizado.
+	 * @param cpf, String com o cpf que sera usado para a busca.
+	 * @return pos, retorna um int referente a posição do cliente no array.
+	 * @throws NaoEncontradoException, envia uma Exception quando o cliente não é encontrado no array.
+	 */
+	public int getClientePos(String cpf) throws NaoEncontradoException;
+	/**
+	 * Edita o cliente no array do repositório.
+	 * @param pos, posição para trocar o cliente.
+	 * @param cliente, recebe o cliente que ira substituir no array
+	 */
+	public void setCliente(int pos, Cliente cliente);
 }
