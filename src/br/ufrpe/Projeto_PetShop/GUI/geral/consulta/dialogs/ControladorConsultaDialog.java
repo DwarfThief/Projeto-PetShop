@@ -1,4 +1,4 @@
-package br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.create;
+package br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs;
 
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.CadastroInvalidoException;
@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ControladorCreateConsulta {
+public class ControladorConsultaDialog {
 	@FXML
 	private TextField cpfTextField;
 	@FXML
@@ -34,7 +34,7 @@ public class ControladorCreateConsulta {
 	
 	private void setAnimaisComboBox(Cliente c) {
 		try {
-			this.animaisComboBox.getItems().add(Fachada.getInstance().contAnimais().getAnimaisCliente(c.getCpf()));
+			this.animaisComboBox.getItems().add(Fachada.getInstance().getAnimaisCliente(c.getCpf()));
 		} catch (NaoEncontradoException | CadastroInvalidoException e) {
 			e.printStackTrace();
 		}

@@ -32,7 +32,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class ControladorTabelaFuncionarios implements Initializable {
-	private final ObservableList<Funcionario> data = FXCollections.observableArrayList(Fachada.getInstance().contFuncionarios().getFuncionarioArray());
+	private final ObservableList<Funcionario> data = FXCollections.observableArrayList(Fachada.getInstance().getFuncionariosArray());
 
 	@FXML
 	private TableView<Funcionario> personTable;
@@ -127,7 +127,7 @@ public class ControladorTabelaFuncionarios implements Initializable {
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				try {
-					Fachada.getInstance().contFuncionarios().remover(this.personTable.getSelectionModel().getSelectedItem().getCpf());
+					Fachada.getInstance().removerFuncionario(this.personTable.getSelectionModel().getSelectedItem().getCpf());
 				} catch (CpfInvalidoException e) {
 					Alert alertE = new Alert(AlertType.INFORMATION);
 					alertE.setTitle("Er...");

@@ -3,9 +3,6 @@ package br.ufrpe.Projeto_PetShop.GUI;
 import java.io.IOException;
 
 import br.ufrpe.Projeto_PetShop.MainApp;
-import br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.ControladorTabelaFuncionarios;
-import br.ufrpe.Projeto_PetShop.GUI.geral.client.ControladorClienteScene;
-import br.ufrpe.Projeto_PetShop.GUI.geral.consulta.ControladorConsultaScene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -49,7 +46,7 @@ public class ScreenManager {
     }
     /**
      * Muda o Stage
-     * @param  mainStage
+     * @param  mainStage, Stage que serve para fazer dela a main stage.
      */
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
@@ -58,7 +55,7 @@ public class ScreenManager {
     }
     /**
      * Muda a cena central que sera exibida, precisa apenas passar como parametro uma String com a localizacao do arquivo .fxml
-     * @param localizacao
+     * @param localizacao, uma String indicando o enderoço do arquivo .fxml
      */
     public void setCenterScene(String localizacao) {
     	AnchorPane cena;

@@ -15,7 +15,7 @@ public class ControladorDeAnimais {
 	 * Checa e adiciona um animal
 	 * @param animal
 	 * @throws NaoEncontradoException 
-	 * @throws CadastroInvalidoExceptions
+	 * @throws CadastroInvalidoException
 	 */
 	public void addAnimal(Animal animal) throws CadastroInvalidoException, NaoEncontradoException {
 		if(animal != null && animal.getDono() != null 

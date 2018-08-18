@@ -9,6 +9,7 @@ import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.edit.Controlador
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.create.ControladorAnimalCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.ControladorClientDialog;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
+import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -135,10 +136,10 @@ public class ControladorClienteScene implements Initializable{
 			try {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/client/dialogs/animal/create/AnimalCreateDialog.fxml"));
-				AnchorPane page = (AnchorPane)loader.load();
+				AnchorPane page = loader.load();
 				// Cria o palco dialogStage.
 				Stage dialogStage = new Stage();
-				ControladorAnimalCreateDialog fooController = (ControladorAnimalCreateDialog) loader.getController();
+				ControladorAnimalCreateDialog fooController = loader.getController();
 				fooController.setDialogStage(dialogStage);
 				dialogStage.setTitle("Cadastrar animal");
 				dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -178,11 +179,13 @@ public class ControladorClienteScene implements Initializable{
 				// Define a pessoa no controller, assim sera possível o carregamento no dialog.
 				ControladorAnimalEditDialog controller = loader.getController();
 				controller.setDialogStage(dialogStage);
-				controller.setPerson(Fachada.getInstance().contAnimais().getAnimal(personTable.getSelectionModel().getSelectedItem().getCpf(), "X"));
+				controller.setPerson(Fachada.getInstance().getAnimal(personTable.getSelectionModel().getSelectedItem().getCpf(), "X"));
 				//TODO por o nome do animal selecionado do ComboBox no setAnimal
 				// Mostra a janela e espera até o usuário fechar.
 				dialogStage.showAndWait();
 			}catch(IOException e) {
+				e.printStackTrace();
+			} catch (NaoEncontradoException e) {
 				e.printStackTrace();
 			}
 		}else {
@@ -207,7 +210,6 @@ public class ControladorClienteScene implements Initializable{
 			alert.setContentText("É necessário selecionar um animal.");
 
 			alert.showAndWait();
-		}
 	}
 	/**
 	 * Emite um alert quando o cliente n foi selecionado.

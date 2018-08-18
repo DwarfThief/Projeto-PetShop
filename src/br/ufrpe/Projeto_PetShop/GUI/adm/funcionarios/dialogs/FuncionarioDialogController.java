@@ -2,6 +2,7 @@ package br.ufrpe.Projeto_PetShop.GUI.adm.funcionarios.dialogs;
 
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.CadastroInvalidoException;
+import br.ufrpe.Projeto_PetShop.exceptions.CpfInvalidoException;
 import br.ufrpe.Projeto_PetShop.exceptions.FuncionarioJaExisteException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
@@ -109,17 +110,19 @@ public class FuncionarioDialogController {
 			try{
 				if(this.funcionario !=null){
 					//Para editar um Funcionário já criado.
-					Fachada.getInstance().contFuncionarios().setFuncionario(
-							Fachada.getInstance().contFuncionarios().getFuncionarioPos(funcionario.getCpf()), novoFuncionario);
+					Fachada.getInstance().removerFuncionario(funcionario.getCpf());
+					Fachada.getInstance().cadastrarFuncionario(novoFuncionario);
 				}else {
 					//Para criar um Funcionário novo.
-					Fachada.getInstance().contFuncionarios().addFuncionario(novoFuncionario);
+					Fachada.getInstance().cadastrarFuncionario(novoFuncionario);
 				}
 				dialogStage.close();
-			} catch (CadastroInvalidoException | NaoEncontradoException e) {
-				e.printStackTrace();
-			} catch (FuncionarioJaExisteException e) {
+			} catch (CadastroInvalidoException | NaoEncontradoException ne) {
+				ne.printStackTrace();
+			} catch (FuncionarioJaExisteException fjee) {
 				this.alertFuncionarioJaExiste();
+			} catch (CpfInvalidoException cpfie){
+				this.alertCadastroInvalido();
 			}
 		}else {
     		this.alertCadastroInvalido();

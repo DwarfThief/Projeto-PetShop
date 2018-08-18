@@ -49,7 +49,7 @@ public class LoginController {
 		String loginTxt = login.getText();
 		String senhaTxt = senha.getText();
 		try {
-			Funcionario f = Fachada.getInstance().checkLogin().checagemLogin(loginTxt, senhaTxt);
+			Funcionario f = Fachada.getInstance().checarLogin(loginTxt, senhaTxt);
 			if(f instanceof Gerente == true) {
 				ScreenManager.getInstance().setCenterScene("/br/ufrpe/Projeto_PetShop/GUI/adm/menu/menuScene.fxml");
 			}else if(f instanceof Vendedor == true || f instanceof Veterinario == true) {

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="260.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.create.ControladorCreateConsulta">
+<AnchorPane prefHeight="260.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.ControladorConsultaDialog">
    <children>
       <GridPane layoutX="14.0" layoutY="14.0" prefHeight="159.0" prefWidth="272.0">
         <columnConstraints>

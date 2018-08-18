@@ -6,11 +6,10 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
-import br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.create.ControladorCreateConsulta;
+import br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.ControladorConsultaDialog;
 import br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.edit.ControladorEditConsulta;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.CadastroInvalidoException;
-import br.ufrpe.Projeto_PetShop.exceptions.CpfInvalidoException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Consulta;
 import javafx.collections.FXCollections;
@@ -28,7 +27,7 @@ import javafx.stage.Stage;
 public class ControladorConsultaScene implements Initializable {
 	@FXML
 	private TableView<Consulta> personTable;
-	private final ObservableList<Consulta> data = FXCollections.observableArrayList(Fachada.getInstance().contConsultas().getConsultasArray());
+	private final ObservableList<Consulta> data = FXCollections.observableArrayList(Fachada.getInstance().getConsultasArray());
 	@FXML
 	private TableColumn<Consulta, String> nomeTableColumn;
 	@FXML
@@ -54,11 +53,11 @@ public class ControladorConsultaScene implements Initializable {
 	private void handleNewConsulta() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/dialogs/create/ConsultaCreateDialog.fxml"));
+			loader.setLocation(MainApp.class.getResource("/br/ufrpe/Projeto_PetShop/GUI/geral/consulta/dialogs/ConsultaCreateDialog.fxml"));
 			AnchorPane page = loader.load();
 			// Cria o palco dialogStage.
 			Stage dialogStage = new Stage();
-			ControladorCreateConsulta fooController = loader.getController();
+			ControladorConsultaDialog fooController = loader.getController();
 			fooController.setDialogStage(dialogStage);
 			fooController.setCliente(personTable.getSelectionModel().selectedItemProperty());
 			dialogStage.setTitle("Cadastrar cliente");
@@ -108,7 +107,7 @@ public class ControladorConsultaScene implements Initializable {
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK){
 				try {
-					Fachada.getInstance().contConsultas().removerConsulta(this.personTable.getSelectionModel().getSelectedItem());
+					Fachada.getInstance().removerConsulta(this.personTable.getSelectionModel().getSelectedItem());
 				} catch (CadastroInvalidoException e) {
 					Alert alertE = new Alert(Alert.AlertType.INFORMATION);
 					alertE.setTitle("Er...");

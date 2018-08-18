@@ -95,11 +95,12 @@ public class ControladorClientDialog {
 			try{
 				if(this.cliente!=null){
 					//Caso o dialog tenha sido chamado atraves do "Editar cliente"
-					Fachada.getInstance().contClientes().setCliente(Fachada.getInstance().contClientes().getClientePos(cliente.getCpf()), novoCliente);
+					Fachada.getInstance().removerCliente(cliente.getCpf());
+					Fachada.getInstance().cadastrarCliente(novoCliente);
 					this.dialogStage.close();
 				}else{
 					//Caso o dialog tenha sido chamado atraves do "Cadastrar cliente"
-					Fachada.getInstance().contClientes().cadastrarCliente(novoCliente);
+					Fachada.getInstance().cadastrarCliente(novoCliente);
 					this.dialogStage.close();
 				}
 
