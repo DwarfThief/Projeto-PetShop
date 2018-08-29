@@ -4,7 +4,9 @@ import br.ufrpe.Projeto_PetShop.exceptions.FuncionarioJaExisteException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Funcionario;
 
-public class RepositorioFuncionario implements IRepositorioFuncionario{
+import java.io.Serializable;
+
+public class RepositorioFuncionario implements IRepositorioFuncionario, Serializable {
 	private static RepositorioFuncionario instance;
 	
 	private Funcionario funcionarios[] = new Funcionario[5];

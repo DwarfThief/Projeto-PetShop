@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
 import br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.ControladorConsultaDialog;
-import br.ufrpe.Projeto_PetShop.GUI.geral.consulta.dialogs.edit.ControladorEditConsulta;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.CadastroInvalidoException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
@@ -80,7 +79,7 @@ public class ControladorConsultaScene implements Initializable {
 				AnchorPane page = (AnchorPane)loader.load();
 				// Cria o palco dialogStage.
 				Stage dialogStage = new Stage();
-				ControladorEditConsulta fooController = (ControladorEditConsulta) loader.getController();
+				ControladorConsultaDialog fooController = loader.getController();
 				fooController.setDialogStage(dialogStage);
 				dialogStage.setTitle("Cadastrar cliente");
 				dialogStage.initModality(Modality.WINDOW_MODAL);

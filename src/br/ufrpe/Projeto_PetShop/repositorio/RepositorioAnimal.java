@@ -3,7 +3,9 @@ package br.ufrpe.Projeto_PetShop.repositorio;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Animal;
 
-public class RepositorioAnimal implements IRepositorioAnimal {
+import java.io.Serializable;
+
+public class RepositorioAnimal implements IRepositorioAnimal, Serializable {
 	private static RepositorioAnimal instance;
 	
 	private Animal animais[] = new Animal[5];

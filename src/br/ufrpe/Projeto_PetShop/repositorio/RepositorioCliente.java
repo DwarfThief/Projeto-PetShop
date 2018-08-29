@@ -4,7 +4,9 @@ import br.ufrpe.Projeto_PetShop.exceptions.ClienteJaExisteException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Cliente;
 
-public class RepositorioCliente implements IRepositorioCliente  {
+import java.io.Serializable;
+
+public class RepositorioCliente implements IRepositorioCliente, Serializable {
 	private static RepositorioCliente instance;
 	
 	private Cliente clientes[] = new Cliente[5];

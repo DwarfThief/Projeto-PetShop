@@ -3,10 +3,10 @@ package br.ufrpe.Projeto_PetShop.GUI.geral.client;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.Dialog.AnimalDialogCrontroller;
 import br.ufrpe.Projeto_PetShop.MainApp;
 import br.ufrpe.Projeto_PetShop.GUI.ScreenManager;
-import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.edit.ControladorAnimalEditDialog;
-import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.animal.create.ControladorAnimalCreateDialog;
 import br.ufrpe.Projeto_PetShop.GUI.geral.client.dialogs.cliente.ControladorClientDialog;
 import br.ufrpe.Projeto_PetShop.controller.Fachada;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
@@ -53,6 +53,7 @@ public class ControladorClienteScene implements Initializable{
 		nomeTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("nome"));
 		cpfTableView.setCellValueFactory(new PropertyValueFactory<Cliente,String>("cpf"));
 		personTable.setItems(data);
+		ScreenManager.getInstance();
 
 	}
 	/**
@@ -139,7 +140,7 @@ public class ControladorClienteScene implements Initializable{
 				AnchorPane page = loader.load();
 				// Cria o palco dialogStage.
 				Stage dialogStage = new Stage();
-				ControladorAnimalCreateDialog fooController = loader.getController();
+				AnimalDialogCrontroller fooController = loader.getController();
 				fooController.setDialogStage(dialogStage);
 				dialogStage.setTitle("Cadastrar animal");
 				dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -168,7 +169,7 @@ public class ControladorClienteScene implements Initializable{
 				AnchorPane page = loader.load();
 				// Cria o palco dialogStage.
 				Stage dialogStage = new Stage();
-				ControladorAnimalCreateDialog fooController = loader.getController();
+				AnimalDialogCrontroller fooController = loader.getController();
 				fooController.setDialogStage(dialogStage);
 				dialogStage.setTitle("Cadastrar animal");
 				dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -177,9 +178,9 @@ public class ControladorClienteScene implements Initializable{
 				dialogStage.setScene(scene);
 
 				// Define a pessoa no controller, assim sera possível o carregamento no dialog.
-				ControladorAnimalEditDialog controller = loader.getController();
+				AnimalDialogCrontroller controller = loader.getController();
 				controller.setDialogStage(dialogStage);
-				controller.setPerson(Fachada.getInstance().getAnimal(personTable.getSelectionModel().getSelectedItem().getCpf(), "X"));
+				controller.setAnimal(Fachada.getInstance().getAnimal(personTable.getSelectionModel().getSelectedItem().getCpf(), "X"));
 				//TODO por o nome do animal selecionado do ComboBox no setAnimal
 				// Mostra a janela e espera até o usuário fechar.
 				dialogStage.showAndWait();

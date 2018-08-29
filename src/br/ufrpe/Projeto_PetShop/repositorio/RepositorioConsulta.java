@@ -4,7 +4,9 @@ import br.ufrpe.Projeto_PetShop.exceptions.CadastroInvalidoException;
 import br.ufrpe.Projeto_PetShop.exceptions.NaoEncontradoException;
 import br.ufrpe.Projeto_PetShop.repositorio.beans.Consulta;
 
-public class RepositorioConsulta implements IRepositorioConsulta{
+import java.io.Serializable;
+
+public class RepositorioConsulta implements IRepositorioConsulta, Serializable {
 	private static RepositorioConsulta instance;
 	
 	private Consulta consultas[]=new Consulta[5];
