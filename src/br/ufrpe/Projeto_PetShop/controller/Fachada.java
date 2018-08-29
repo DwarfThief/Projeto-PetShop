@@ -18,8 +18,8 @@ public class Fachada {
 	private ControladorDeClientes controladorDeClientes;
 	private CheckLogin checkLogin;
 	/**
-	 * Retorna instance da fachada, assim limitando sua criação para uma única
-	 * @return instance, retorna a instância da Fachada, assim tornando impossível duas fachadas
+	 * Retorna instance da fachada, assim limitando sua criacao para uma unica
+	 * @return instance, retorna a instancia da Fachada, assim tornando impossivel duas fachadas.
 	 */
 	public static Fachada getInstance() {
 	    if (instance == null) {
@@ -35,121 +35,136 @@ public class Fachada {
 		this.checkLogin = new CheckLogin();
 	}
 	/**
-	 * TODO comentar método
-	 * @param nome
-	 * @param cpf
-	 * @return
-	 * @throws NaoEncontradoException
+	 * Retorna o animal usando como parametro o nome do animal e o cpf do seu dono.
+	 * @param nome, String que tera o nome do Animal.
+	 * @param cpf, String que tera o CPF do dono.
+	 * @return Animal, retorna Animal do repositorio que possua o mesmo nome que foi passado como parametro e um dono
+	 * igual ao CPF recebido como atributo.
+	 * @throws NaoEncontradoException, retorna uma Exception alegando que o animal nao foi encontrado.
 	 */
 	public Animal getAnimal(String nome, String cpf) throws NaoEncontradoException {
 		return this.controladorDeAnimais.getAnimal(cpf, nome);
 	}
 	/**
-	 * TODO comentar método
-	 * @param cpf
-	 * @return
-	 * @throws CadastroInvalidoException
-	 * @throws NaoEncontradoException
+	 * Retorna um Array do tipo Animal contendo todos os animais que o cliente possui cadastrado em seu nome.
+	 * @param cpf, uma String possuindo o CPF do cliente.
+	 * @return	Animal[], array tipo Animal[].
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro eh invalido devido a ausencia de
+	 * alguma informacaoo. Serve para nao deixar acontecer um {@link NullPointerException}.
+	 * @throws NaoEncontradoException, lancado quando o cliente nao foi encontrado.
 	 */
 	public Animal[] getAnimaisCliente(String cpf) throws CadastroInvalidoException, NaoEncontradoException {
 		return this.controladorDeAnimais.getAnimaisCliente(cpf);
 	}
 	/**
-	 * TODO comentar método
-	 * @param nome
-	 * @param cpf
-	 * @throws NaoEncontradoException
-	 * @throws CadastroInvalidoException
+	 * Remove o animal de acordo com o nome do animal e o cpf de seu dono. Ambos passados por parametro.
+	 * @param nome, String representando o nome do animal.
+	 * @param cpf, String representando o cpf do dono do animal.
+	 * @throws NaoEncontradoException, retorna essa exception quando o Animal nao foi encontrado no banco de dados.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}.
 	 */
 	public void removerAnimal(String nome, String cpf) throws NaoEncontradoException, CadastroInvalidoException {
 		this.controladorDeAnimais.remover(cpf, nome);
 	}
 	/**
-	 * TODO comentar o método
-	 * @param animal
-	 * @throws NaoEncontradoException
-	 * @throws CadastroInvalidoException
+	 * Recebe como parametro um objeto tipo Animal contendo os dados do animal para cadastra-lo no repositorio.
+	 * @param animal, objeto tipo Animal contendo a informacao.
+	 * @throws NaoEncontradoException //TODO ver pq disso existir.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}.
 	 */
 	public void cadastrarAnimal(Animal animal) throws NaoEncontradoException, CadastroInvalidoException {
 		this.controladorDeAnimais.addAnimal(animal);
 	}
 	/**
-	 * TODO comentar método
-	 * @return
+	 * Retorna um array do tipo Consulta contendo o repositorio.
+	 * @return Retorna um array do tipo Consulta contendo o repositorio.
 	 */
 	public Consulta[] getConsultasArray(){
 		return this.controladorDeConsultas.getConsultasArray();
 	}
 	/**
-	 * TODO comentar método
-	 * @param veterinario
-	 * @param dia
-	 * @param mes
-	 * @param ano
-	 * @param nomeAnimal
-	 * @return
-	 * @throws NaoEncontradoException
-	 * @throws CadastroInvalidoException
+	 * Procura uma consulta usando as informacoes dadas como parametro para pesquisar e retornar a consulta.
+	 * @param veterinario, String representando o nome do Veterinario que cadastrou a consulta.
+	 * @param dia, int representando o dia.
+	 * @param mes, int representando o mes.
+	 * @param ano, int representando o ano.
+	 * @param nomeAnimal, String representando o nome do animal.
+	 * @return Retorna um objeto tipo Consulta contendo os dados da consulta.
+	 * @throws NaoEncontradoException, retorna essa exception quando nao encontra.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro eh invalido devido a ausencia de
+	 * alguma informacao. Serve para nao deixar acontecer um {@link NullPointerException}.
 	 */
 	public Consulta getConsulta(String veterinario, int dia, int mes, int ano, String nomeAnimal) throws NaoEncontradoException, CadastroInvalidoException {
 		return this.controladorDeConsultas.getConsulta(veterinario,dia,mes,ano,nomeAnimal);
 	}
 	/**
-	 * TODO comentar o método
-	 * @param consulta
-	 * @throws CadastroInvalidoException
-	 * @throws NaoEncontradoException
+	 * Procura se a consulta existe no repositorio, caso sim, o metodo a exclui.
+	 * @param consulta, recebe um Objeto tipo Consulta contendo as informacoes da consulta que deve ser excluida.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}.
+	 * @throws NaoEncontradoException, retorna essa exception quando a consulta nao foi encontrada
 	 */
 	public void removerConsulta(Consulta consulta) throws CadastroInvalidoException, NaoEncontradoException {
 		this.controladorDeConsultas.removerConsulta(consulta);
 	}
 
 	/**
-	 * TODO comentar o método
-	 * @param consulta
-	 * @throws CadastroInvalidoException
+	 * Verifica se a Consulta cumpre os requisitos e caso cumpra, a consulta eh cadastrada, caso nao, um {@link CadastroInvalidoException} eh emitido.
+	 * @param consulta, Consulta que sera enviada para o cadastro do repositorio.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro eh invalido devido a ausencia de
+	 * alguma informacao. Serve para nao deixar acontecer um {@link NullPointerException}.
 	 */
 	public void cadastrarConsulta(Consulta consulta) throws CadastroInvalidoException {
 		this.controladorDeConsultas.addConsulta(consulta);
 	}
 	/**
-	 * TODO comentar o método
-	 * @return
+	 * Retorna um Array tipo Funcionario que possui o msm endereÃ§o que o repositÃ³rio.
+	 * @return Funcionario[], retorna um array do tipo Funcionario que possui o mesmo endereÃ§o que
 	 */
 	public Funcionario[] getFuncionariosArray(){
 		return this.controladorDeFuncionarios.getFuncionarioArray();
 	}
 	/**
-	 * TODO comentar o método
-	 * @param pos
-	 * @return
-	 * @throws NaoEncontradoException
+	 * Retorna o Funcionario da posicao {@code pos} passada por parametro que
+	 * @param pos, int representando a posiï¿½ï¿½o do Funcionario no Array do repositorio.
+	 * @return Funcionario, retorna o funcionario de acordo com a pos no Array.
+	 * @throws NaoEncontradoException, retorna essa exception quando o Funcionario nï¿½o foi encontrado no repositï¿½rio.
 	 */
 	public Funcionario getFuncionario(int pos) throws NaoEncontradoException {
 		return this.controladorDeFuncionarios.getFuncionario(pos);
 	}
 	/**
-	 * TODO comentar o método
-	 * @param cpf
-	 * @return
-	 * @throws CpfInvalidoException
-	 * @throws CadastroInvalidoException
+	 * Recebe uma String como parametro e usa essa String para buscar um Funcionario, caso encontrado ele retorna esse
+	 * Funcionario.
+	 * @param cpf, String representando o cpf do Funcionario que sera pesquisado no repositorio.
+	 * @return Funcionario, retorna o funcionario que possui o cpf igual ao cpf enviado por parametro.
+	 * @throws CpfInvalidoException, retorna essa exception quando o CPF ï¿½ invï¿½lido alegando que nï¿½o existe Funcionario
+	 * cadastrado com esse cpf.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}.
 	 */
 	public Funcionario getFuncionario(String cpf) throws CpfInvalidoException, CadastroInvalidoException {
 		return this.controladorDeFuncionarios.getFuncionario(cpf);
 	}
 	/**
-	 * TODO comentar o método
-	 * @param funcionario
-	 * @throws FuncionarioJaExisteException
-	 * @throws CadastroInvalidoException
+	 * O metodo verificar se o Funcionario enviado como parametro possui os campos de cadastro preenchidos e se nï¿½o
+	 * existe algum Funcionario usando o mesmo cpf. Caso tudo esteja de acordo o Funcionario ï¿½ cadastrado no repositï¿½rio.
+	 * @param funcionario, recebe uma instï¿½ncia de um object tipo Funcionario.
+	 * @throws FuncionarioJaExisteException, retrona essa exception quando o CPF ja esta cadastrado em algum outro
+	 * Funcionï¿½rio, por tanto, o funcionï¿½rio jï¿½ existe.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}.
 	 */
 	public void cadastrarFuncionario(Funcionario funcionario) throws FuncionarioJaExisteException, CadastroInvalidoException {
 		this.controladorDeFuncionarios.addFuncionario(funcionario);
 	}
 	/**
-	 * TODO comentar o método.
-	 * @param cpf
+	 * Recebe como parï¿½metro uma String remetendo ao CPF do Funcionï¿½rio e deleta do repositï¿½rio.
+	 * @param cpf, uma String que representa o CPF do Funcionï¿½rio
+	 * @throws NaoEncontradoException, retorna essa Exception quando o Funcionï¿½rio nï¿½o foi encontrado no Array
+	 * @throws CpfInvalidoException, retorna essa Exception quando o cpf nï¿½o ï¿½ vï¿½lido.
 	 */
 	public void removerFuncionario(String cpf) throws NaoEncontradoException, CpfInvalidoException {
 		this.controladorDeFuncionarios.remover(cpf);
@@ -161,56 +176,65 @@ public class Fachada {
 	public ControladorDeClientes contClientes() {
 		return this.controladorDeClientes;
 	}
+
+	/**
+	 * Retorna o array do banco de dados.
+	 * @return Cliente[], retorna o array do repositï¿½rio inteiro.
+	 */
 	public Cliente[] getClientesArray(){
 		return this.controladorDeClientes.getClientesArray();
 	}
 	/**
-	 * TODO comentar o método
-	 * @param cpf
-	 * @return
-	 * @throws CadastroInvalidoException
-	 * @throws NaoEncontradoException
+	 * Recebe uma String com o cpf e retornarï¿½ a pos do Cliente no Array do repositï¿½rio.
+	 * @param cpf, uma String contendo o CPF do cliente.
+	 * @return int representando a posiï¿½ï¿½o do Cliente no Array.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}
+	 * @throws NaoEncontradoException, retorna essa exception quando o cliente nï¿½o foi encontrado no banco de dados.
 	 */
 	public int getClientePos(String cpf) throws CadastroInvalidoException, NaoEncontradoException {
 		return this.controladorDeClientes.getClientePos(cpf);
 	}
 	/**
-	 * TODO comentar o método
-	 * @param cpf
-	 * @throws CadastroInvalidoException
-	 * @throws NaoEncontradoException
+	 * O mï¿½todo recebe uma String representando o cpf, busca no repositï¿½rio e retorna o Cliente correspondente.
+	 * @param cpf, String como paramentro representando o cpf para buscar o cliente.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}.
+	 * @throws NaoEncontradoException, exception enviada quando o Cliente nï¿½o ï¿½ encontrado no banco de dados.
 	 */
 	public Cliente getCliente(String cpf) throws CadastroInvalidoException, NaoEncontradoException {
 		return this.controladorDeClientes.getCliente(cpf);
 	}
 	/**
-	 * Adiciona um cliente no repositório de clientes usando o objeto do parametro.
-	 * @param cliente, objeto do tipo cliente;
-	 * @throws NaoEncontradoException, retorna essa exception mas ela nunca irá acontecer com esse método.
-	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro é invalido devido a ausência de
-	 * alguma informação. Serve para não deixar acontecer um {@link NullPointerException}
+	 * Adiciona um cliente no repositï¿½rio de clientes usando o objeto do parametro.
+	 * @param cliente, objeto do tipo cliente.
+	 * @throws NaoEncontradoException, retorna essa exception mas ela nunca irï¿½ acontecer com esse mï¿½todo.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invalido devido a ausï¿½ncia de
+	 * alguma informaï¿½ï¿½o. Serve para nï¿½o deixar acontecer um {@link NullPointerException}.
 	 * @throws ClienteJaExisteException, retorna essa exception quando o cpf ja foi cadastrado em algum cliente.
 	 */
 	public void cadastrarCliente(Cliente cliente) throws NaoEncontradoException, CadastroInvalidoException, ClienteJaExisteException {
 		this.controladorDeClientes.cadastrarCliente(cliente);
 	}
 	/**
-	 * Procura um cliente no repositório e o deleta.
+	 * Procura um cliente no repositï¿½rio e o deleta.
 	 * @param cpf, uma String contendo o cpf do cliente que sera removido.
-	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro é inválido devido a ausência de algum
-	 * dado importante. Serve para não deixar acontecer um {@link NullPointerException}
-	 * @throws NaoEncontradoException, essa exception nunca acontecerá.
+	 * @throws CadastroInvalidoException, retorna essa exception quando o cadastro ï¿½ invï¿½lido devido a ausï¿½ncia de algum
+	 * dado importante. Serve para nï¿½o deixar acontecer um {@link NullPointerException}
+	 * @throws NaoEncontradoException, essa exception nunca acontecerï¿½.
 	 */
 	public void removerCliente(String cpf) throws CadastroInvalidoException, NaoEncontradoException {
 		this.controladorDeClientes.removerCliente(cpf);
 	}
 
 	/**
-	 *
-	 * @param login
-	 * @param senha
-	 * @return
-	 * @throws LoginInvalidoException
+	 * Mï¿½todo que checa se as String mandadas atravï¿½s do parametros estï¿½o cadastras em algum Funcionario como Login ou
+	 * Senha
+	 * @param login, String representando o Login do usuï¿½rio.
+	 * @param senha, String representando a senha do usuï¿½rio.
+	 * @return Funcionario, retorna o funcionï¿½rio que foi feito o Login
+	 * @throws LoginInvalidoException, envia essa exception quando o Login ou Senha nï¿½o estï¿½o cadastrados em nenhum
+	 * cliente
 	 */
 	public Funcionario checarLogin(String login, String senha) throws LoginInvalidoException {
 		return this.checkLogin.checagemLogin(login,senha);
